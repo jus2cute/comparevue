@@ -17,7 +17,7 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body { @apply bg-white text-gray-900 antialiased; }
-  .prose .comparison-table { @apply not-prose; }
+  .prose .comparison-table { }
 }
 
 @layer components {
