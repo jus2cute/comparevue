@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+const articles = await getCollection('articles');
+const sorted = articles.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<BaseLayout
+  title="All Articles"
+  description="In-depth guides, best-of lists, and how-tos covering CRM, project management, finance, and more SaaS tools."
+>
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold text-gray-900">All Articles</h1>
+    <p class="mt-2 text-gray-600">{articles.length} articles and counting.</p>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {sorted.map(a => (
+        <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
+          date={a.data.pubDate} category={a.data.category} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

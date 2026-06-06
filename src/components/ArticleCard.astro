@@ -1,0 +1,25 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  date: Date;
+  category?: string;
+  readTime?: string;
+}
+const { title, description, slug, date, category, readTime } = Astro.props;
+const href = slug.startsWith('/') ? slug : '/articles/' + slug;
+---
+<article class="card group">
+  {category && <span class="badge mb-3">{category}</span>}
+  <a href={href} class="no-underline">
+    <h3 class="text-lg font-semibold text-gray-900 transition group-hover:text-brand-600">{title}</h3>
+  </a>
+  <p class="mt-2 line-clamp-2 text-sm text-gray-600">{description}</p>
+  <div class="mt-4 flex items-center gap-3 text-xs text-gray-500">
+    <time datetime={date.toISOString().split('T')[0]}>
+      {date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </time>
+    {readTime && <span>· {readTime}</span>}
+  </div>
+</article>

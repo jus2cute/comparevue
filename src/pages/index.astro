@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+
+const featuredComparisons = [
+  { title: 'Monday.com vs Asana', description: 'Compare features, pricing, and workflows to find the best project management tool for your team.', slug: '/comparisons/monday-vs-asana', date: new Date(), category: 'Project Management' },
+  { title: 'HubSpot vs Salesforce', description: 'Two CRM giants go head to head. Which one fits your budget and team size?', slug: '/comparisons/hubspot-vs-salesforce', date: new Date(), category: 'CRM' },
+  { title: 'Notion vs Confluence', description: 'Modern docs vs enterprise wiki — which knowledge base wins for your team?', slug: '/comparisons/notion-vs-confluence', date: new Date(), category: 'Documentation' },
+];
+
+const recentArticles = [
+  { title: 'Best CRM for Small Business (2025)', description: 'We tested 12 CRMs for affordability, ease of use, and integrations. Here are the top 5.', slug: 'best-crm-for-small-business', date: new Date(), category: 'CRM' },
+  { title: 'Best Project Management Software for Remote Teams', description: 'Distributed teams need different things from their PM tools. Our top picks.', slug: 'best-pm-remote-teams', date: new Date(), category: 'Project Management' },
+  { title: 'How to Choose the Right Accounting Software', description: 'A practical framework for evaluating accounting tools based on your business size.', slug: 'choose-accounting-software', date: new Date(), category: 'Finance' },
+];
+
+const siteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'CompareVue',
+  url: Astro.site?.href || '',
+  description: 'Honest, data-driven SaaS and software comparisons to help you pick the right tools.',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: { '@type': 'EntryPoint', urlTemplate: (Astro.site?.href || '') + '/search?q={search_term_string}' },
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<BaseLayout
+  title="CompareVue — Smart SaaS Comparisons"
+  description="CompareVue helps you pick the right software with data-driven comparisons and in-depth guides. No fluff, no sponsorships — just honest analysis."
+  schema={siteSchema}
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-b from-brand-50 to-white py-20">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
+        Find the Right Software<br />
+        <span class="text-brand-600">Without the Guesswork</span>
+      </h1>
+      <p class="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
+        Honest, data-driven comparisons between the top SaaS tools. We test the features, compare the pricing, and help you decide — fast.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="/comparisons" class="btn-primary text-lg px-8 py-4">Compare Tools</a>
+        <a href="/articles" class="rounded-lg border border-gray-300 px-8 py-4 text-lg font-semibold text-gray-700 transition hover:bg-gray-50">Read Guides</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Comparisons -->
+  <section class="py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900">Head-to-Head Comparisons</h2>
+      <p class="mt-2 text-gray-600">See how the top tools stack up side by side.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {featuredComparisons.map(c => <ArticleCard {...c} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Articles -->
+  <section class="bg-gray-50 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900">Latest Guides & Best-of Lists</h2>
+      <p class="mt-2 text-gray-600">In-depth buying guides researched and written for real users.</p>
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {recentArticles.map(a => <ArticleCard {...a} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 text-center">
+    <div class="mx-auto max-w-2xl px-4">
+      <h2 class="text-2xl font-bold text-gray-900">Don't see the comparison you need?</h2>
+      <p class="mt-2 text-gray-600">We add new comparisons every week. Check back or suggest one.</p>
+    </div>
+  </section>
+</BaseLayout>

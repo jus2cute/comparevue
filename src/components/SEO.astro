@@ -1,0 +1,59 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  articlePublished?: Date;
+  articleModified?: Date;
+  schema?: Record<string, any>;
+  noindex?: boolean;
+}
+
+const {
+  title, description,
+  image = '/images/og-default.png',
+  canonicalURL, articlePublished, articleModified,
+  schema, noindex = false,
+} = Astro.props;
+
+const siteName = 'CompareVue';
+const siteURL = Astro.site?.href?.replace(/\/$/, '') || '';
+const ogImage = image.startsWith('http') ? image : siteURL + (image.startsWith('/') ? image : '/' + image);
+const fullDesc = description.length > 160 ? description.slice(0, 157) + '...' : description;
+
+const baseSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteName,
+  url: siteURL,
+  description: 'Honest, data-driven SaaS and software comparisons to help you pick the right tools.',
+};
+---
+
+<title>{title} | {siteName}</title>
+<meta name="description" content={fullDesc} />
+<link rel="canonical" href={canonicalURL || new URL(Astro.url.pathname, siteURL).href} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+{noindex && <meta name="robots" content="noindex, follow" />}
+
+<meta property="og:type" content={articlePublished ? 'article' : 'website'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={fullDesc} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:site_name" content={siteName} />
+{canonicalURL && <meta property="og:url" content={canonicalURL} />}
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={fullDesc} />
+<meta name="twitter:image" content={ogImage} />
+
+{articlePublished && <>
+  <meta property="article:published_time" content={articlePublished.toISOString()} />
+  {articleModified && <meta property="article:modified_time" content={articleModified.toISOString()} />}
+</>}
+
+<script type="application/ld+json" set:html={JSON.stringify(schema || baseSchema)} />

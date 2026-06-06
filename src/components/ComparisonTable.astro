@@ -1,0 +1,48 @@
+---
+export interface Props {
+  title?: string;
+  products: Array<{
+    name: string;
+    features: Record<string, string | boolean>;
+    pricing?: string;
+    cta?: { text: string; url: string };
+  }>;
+  features: Array<{ key: string; label: string }>;
+}
+const { title, products, features } = Astro.props;
+---
+<div class="comparison-table my-8 overflow-x-auto rounded-xl border border-gray-200">
+  {title && <h3 class="border-b bg-gray-50 px-6 py-4 text-lg font-semibold">{title}</h3>}
+  <table class="w-full text-left text-sm">
+    <thead>
+      <tr class="border-b bg-gray-50">
+        <th class="px-6 py-3 font-medium text-gray-900">Feature</th>
+        {products.map(p => <th class="px-6 py-3 font-medium text-gray-900">{p.name}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {features.map(f => (
+        <tr class="border-b last:border-0">
+          <td class="px-6 py-3 font-medium text-gray-700">{f.label}</td>
+          {products.map(p => (
+            <td class="px-6 py-3 text-gray-600">
+              {typeof p.features[f.key] === 'boolean' ? (p.features[f.key] ? '✅' : '❌') : p.features[f.key]}
+            </td>
+          ))}
+        </tr>
+      ))}
+      <tr class="border-t-2">
+        <td class="px-6 py-3 font-medium text-gray-900">Pricing</td>
+        {products.map(p => <td class="px-6 py-3 font-semibold text-brand-600">{p.pricing || '-'}</td>)}
+      </tr>
+      <tr>
+        <td class="px-6 py-3"></td>
+        {products.map(p => (
+          <td class="px-6 py-3">
+            {p.cta && <a href={p.cta.url} class="btn-primary text-sm" rel="nofollow sponsored">{p.cta.text}</a>}
+          </td>
+        ))}
+      </tr>
+    </tbody>
+  </table>
+</div>

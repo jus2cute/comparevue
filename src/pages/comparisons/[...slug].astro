@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparisons');
+  return comparisons.map(c => ({ params: { slug: c.id }, props: { comparison: c } }));
+}
+
+const { comparison } = Astro.props;
+const { Content } = await comparison.render();
+
+const compSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: comparison.data.title,
+  description: comparison.data.description,
+  datePublished: comparison.data.pubDate.toISOString(),
+  dateModified: (comparison.data.updatedDate || comparison.data.pubDate).toISOString(),
+};
+---
+
+<BaseLayout
+  title={comparison.data.title}
+  description={comparison.data.description}
+  articlePublished={comparison.data.pubDate}
+  articleModified={comparison.data.updatedDate}
+  schema={compSchema}
+>
+  <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <span class="badge mb-4">{comparison.data.category}</span>
+    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">{comparison.data.title}</h1>
+    <p class="mt-4 text-lg text-gray-600">{comparison.data.description}</p>
+    <div class="mt-6 text-sm text-gray-500">
+      Last updated: <time datetime={(comparison.data.updatedDate || comparison.data.pubDate).toISOString().split('T')[0]}>
+        {(comparison.data.updatedDate || comparison.data.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      </time>
+    </div>
+    <div class="prose prose-lg prose-gray mt-8 max-w-none"><Content /></div>
+  </article>
+</BaseLayout>

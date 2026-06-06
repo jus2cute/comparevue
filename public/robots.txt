@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://comparevue.com/sitemap-index.xml
