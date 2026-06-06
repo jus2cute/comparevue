@@ -1,10 +1,8 @@
 ---
 title: "Monday.com vs Asana: Which Project Management Tool Wins in 2025?"
-meta_description: "Head-to-head comparison of Monday.com vs Asana covering pricing, features, team size fit, integrations, and a clear verdict on which tool wins for your workflow."
+description: "Head-to-head comparison of Monday.com vs Asana covering pricing, features, team size fit, integrations, and a clear verdict on which tool wins for your workflow."
 category: Project Management
-seo_title: "Monday.com vs Asana 2025 — In-Depth Comparison for Teams of Every Size"
-author: Maya
-date: 2025-06-06
+pubDate: 2025-06-06
 ---
 
 # Monday.com vs Asana: Which Project Management Tool Wins in 2025?

@@ -1,10 +1,8 @@
 ---
 title: "Best CRM for Small Business (2025): The 5 Tools That Actually Deliver"
-meta_description: "We compare HubSpot, Pipedrive, Zoho CRM, Freshsales, and Monday CRM head-to-head on pricing, ease of setup, features, and integrations to help small businesses pick the right CRM in 2025."
+description: "We compare HubSpot, Pipedrive, Zoho CRM, Freshsales, and Monday CRM head-to-head on pricing, ease of setup, features, and integrations to help small businesses pick the right CRM in 2025."
 category: CRM
-seo_title: "Best CRM for Small Business 2025 — HubSpot vs Pipedrive vs Zoho vs Freshsales vs Monday"
-author: Maya
-date: 2025-06-06
+pubDate: 2025-06-06
 ---
 
 # Best CRM for Small Business (2025): The 5 Tools That Actually Deliver
