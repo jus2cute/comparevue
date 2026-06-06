@@ -1,6 +1,6 @@
 ---
 title: "HubSpot vs Salesforce: CRM Showdown for Growing Teams (2025)"
-description: "In-depth HubSpot vs Salesforce comparison for growing teams — pricing tiers, feature depth, learning curve, integrations, and which CRM fits each stage of growth."
+description: "In-depth HubSpot vs Salesforce comparison for growing teams — pricing tiers, feature depth, learning curve, integrations, and which CRM fits each stage of..."
 category: CRM
 pubDate: 2025-06-06
 ---

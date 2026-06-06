@@ -1,6 +1,6 @@
 ---
 title: "Best Project Management Software for Remote Teams (2025): 5 Tools That Bridge the Distance"
-description: "We review the top 5 project management tools built for remote teams — evaluating async communication, timezone handling, mobile apps, and Slack/Zoom integrations to find the real winner."
+description: "We review the top 5 project management tools for remote teams — evaluating async communication, timezone handling, mobile apps, and integrations."
 category: Project Management
 pubDate: 2025-06-06
 ---
