@@ -10,32 +10,99 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
+const tool1 = entry.data.tool1 || 'Tool 1';
+const tool2 = entry.data.tool2 || 'Tool 2';
+const pubDate = entry.data.pubDate;
+const updatedDate = entry.data.updatedDate || pubDate;
+
+const pros1: string[] = (entry.data as any).pros1 || [];
+const cons1: string[] = (entry.data as any).cons1 || [];
+const pros2: string[] = (entry.data as any).pros2 || [];
+const cons2: string[] = (entry.data as any).cons2 || [];
+const verdictWinner = (entry.data as any).verdictWinner || '';
+const verdictReason = (entry.data as any).verdictReason || '';
+const verdictText = (entry.data as any).verdictText || '';
+
 const compSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: entry.data.title,
   description: entry.data.description,
-  datePublished: entry.data.pubDate.toISOString(),
-  dateModified: (entry.data.updatedDate || entry.data.pubDate).toISOString(),
+  datePublished: pubDate.toISOString(),
+  dateModified: updatedDate.toISOString(),
 };
 ---
 
 <BaseLayout
   title={entry.data.title}
   description={entry.data.description}
-  articlePublished={entry.data.pubDate}
-  articleModified={entry.data.updatedDate}
+  articlePublished={pubDate}
+  articleModified={updatedDate}
   schema={compSchema}
 >
   <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+
     <span class="badge mb-4">{entry.data.category}</span>
     <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">{entry.data.title}</h1>
     <p class="mt-4 text-lg text-gray-600">{entry.data.description}</p>
     <div class="mt-6 text-sm text-gray-500">
-      Last updated: <time datetime={(entry.data.updatedDate || entry.data.pubDate).toISOString().split('T')[0]}>
-        {(entry.data.updatedDate || entry.data.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+      Updated: <time datetime={updatedDate.toISOString().split('T')[0]}>
+        {updatedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
       </time>
     </div>
-    <div class="prose prose-lg prose-gray mt-8 max-w-none"><Content /></div>
+
+    <!-- Verdict -->
+    {verdictText && (
+      <div class="mt-8 rounded-xl border-l-4 border-green-500 bg-green-50 p-6">
+        <div class="flex items-start gap-3">
+          <span class="text-xl">🏆</span>
+          <div>
+            <h2 class="text-lg font-bold text-gray-900">{verdictWinner} wins for {verdictReason}</h2>
+            <p class="mt-1 text-gray-700">{verdictText}</p>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- Prose Content -->
+    <div class="prose prose-lg prose-gray mt-10 max-w-none">
+      <Content />
+    </div>
+
+    <!-- Pros/Cons -->
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
+        <h3 class="font-semibold text-green-800 mb-3">✅ {tool1} Pros</h3>
+        <ul class="space-y-2">
+          {pros1.map((p: string) => <li class="flex gap-2 text-sm text-green-800"><span>✓</span> {p}</li>)}
+        </ul>
+        <h3 class="font-semibold text-red-800 mt-4 mb-3">❌ {tool1} Cons</h3>
+        <ul class="space-y-2">
+          {cons1.map((c: string) => <li class="flex gap-2 text-sm text-red-800"><span>✗</span> {c}</li>)}
+        </ul>
+      </div>
+      <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
+        <h3 class="font-semibold text-green-800 mb-3">✅ {tool2} Pros</h3>
+        <ul class="space-y-2">
+          {pros2.map((p: string) => <li class="flex gap-2 text-sm text-green-800"><span>✓</span> {p}</li>)}
+        </ul>
+        <h3 class="font-semibold text-red-800 mt-4 mb-3">❌ {tool2} Cons</h3>
+        <ul class="space-y-2">
+          {cons2.map((c: string) => <li class="flex gap-2 text-sm text-red-800"><span>✗</span> {c}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-10 rounded-2xl bg-gradient-to-r from-brand-50 to-brand-100 p-8 sm:p-10 text-center">
+      <h3 class="text-xl font-bold text-gray-900 mb-2">Ready to try them yourself?</h3>
+      <p class="text-gray-600 mb-5">Both tools offer free trials. Click below to explore.</p>
+      <div class="flex flex-wrap gap-3 justify-center">
+        <a href="/go/{tool1.toLowerCase().replace(/\s+/g,'-').replace('.com','')}" class="btn-primary" rel="nofollow">Try {tool1} →</a>
+        <a href="/go/{tool2.toLowerCase().replace(/\s+/g,'-').replace('.com','')}" class="rounded-lg border border-gray-300 px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" rel="nofollow">Try {tool2} →</a>
+      </div>
+      <p class="mt-4 text-xs text-gray-400">We may earn a commission if you sign up, at no extra cost to you.</p>
+    </div>
+
   </article>
 </BaseLayout>

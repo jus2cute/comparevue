@@ -25,6 +25,15 @@ const comparisonsCollection = defineCollection({
     tool1: z.string(),
     tool2: z.string(),
     featured: z.boolean().default(false),
+    bestFor1: z.string().optional(),
+    bestFor2: z.string().optional(),
+    pros1: z.array(z.string()).optional(),
+    cons1: z.array(z.string()).optional(),
+    pros2: z.array(z.string()).optional(),
+    cons2: z.array(z.string()).optional(),
+    verdictWinner: z.string().optional(),
+    verdictReason: z.string().optional(),
+    verdictText: z.string().optional(),
   }),
 });
 

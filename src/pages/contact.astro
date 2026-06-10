@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact Us" description="Get in touch with CompareVue. Suggest a comparison, report an error, or just say hello.">
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold text-gray-900">Contact Us</h1>
+    <p class="mt-4 text-lg text-gray-600">Have a tool you'd like us to compare? Found an error? Want to collaborate? We'd love to hear from you.</p>
+    <div class="mt-10 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+      <form class="space-y-5" action="https://formspree.io/f/your-form-id" method="POST">
+        <div>
+          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+          <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="Your name" />
+        </div>
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email" name="email" id="email" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="you@example.com" />
+        </div>
+        <div>
+          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+          <textarea name="message" id="message" rows="5" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="Tell us what's on your mind..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
+</BaseLayout>

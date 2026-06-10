@@ -1,0 +1,21 @@
+---
+export async function getStaticPaths() {
+  const keys = ['monday','asana','hubspot','salesforce','pipedrive','zoho-crm','freshsales','notion','confluence','clickup','wrike'];
+  return keys.map(tool => ({ params: { tool } }));
+}
+
+const urls: Record<string, string> = {
+  monday: 'https://monday.com', asana: 'https://asana.com', hubspot: 'https://hubspot.com',
+  salesforce: 'https://salesforce.com', pipedrive: 'https://pipedrive.com',
+  'zoho-crm': 'https://zoho.com/crm', freshsales: 'https://freshworks.com/freshsales',
+  notion: 'https://notion.so', confluence: 'https://atlassian.com/confluence',
+  clickup: 'https://clickup.com', wrike: 'https://wrike.com',
+};
+
+const { tool } = Astro.params;
+const url = urls[tool as keyof typeof urls] || '/';
+---
+
+<meta http-equiv="refresh" content={`0;url=${url}`}>
+<link rel="canonical" href={url}>
+<p>Redirecting to <a href={url}>{tool}</a>...</p>

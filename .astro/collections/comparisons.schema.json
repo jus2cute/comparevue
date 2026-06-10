@@ -1,0 +1,114 @@
+{
+  "$ref": "#/definitions/comparisons",
+  "definitions": {
+    "comparisons": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "updatedDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "category": {
+          "type": "string"
+        },
+        "tool1": {
+          "type": "string"
+        },
+        "tool2": {
+          "type": "string"
+        },
+        "featured": {
+          "type": "boolean",
+          "default": false
+        },
+        "bestFor1": {
+          "type": "string"
+        },
+        "bestFor2": {
+          "type": "string"
+        },
+        "pros1": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cons1": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "pros2": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cons2": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verdictWinner": {
+          "type": "string"
+        },
+        "verdictReason": {
+          "type": "string"
+        },
+        "verdictText": {
+          "type": "string"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "title",
+        "description",
+        "pubDate",
+        "category",
+        "tool1",
+        "tool2"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

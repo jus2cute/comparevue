@@ -1,0 +1,57 @@
+{
+  "monday": {
+    "name": "Monday.com",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://monday.com",
+    "placeholder": true
+  },
+  "asana": {
+    "name": "Asana",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://asana.com",
+    "placeholder": true
+  },
+  "hubspot": {
+    "name": "HubSpot",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://hubspot.com",
+    "placeholder": true
+  },
+  "salesforce": {
+    "name": "Salesforce",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://salesforce.com",
+    "placeholder": true
+  },
+  "pipedrive": {
+    "name": "Pipedrive",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://pipedrive.com",
+    "placeholder": true
+  },
+  "zoho-crm": {
+    "name": "Zoho CRM",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://zoho.com/crm",
+    "placeholder": true
+  },
+  "freshsales": {
+    "name": "Freshsales",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://freshworks.com/freshsales",
+    "placeholder": true
+  },
+  "notion": {
+    "name": "Notion",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://notion.so",
+    "placeholder": true
+  },
+  "confluence": {
+    "name": "Confluence",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://atlassian.com/confluence",
+    "placeholder": true
+  },
+  "clickup": {
+    "name": "ClickUp",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://clickup.com",
+    "placeholder": true
+  },
+  "wrike": {
+    "name": "Wrike",
+    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://wrike.com",
+    "placeholder": true
+  }
+}
