@@ -5,6 +5,11 @@ import ArticleCard from '../../components/ArticleCard.astro';
 
 const comparisons = await getCollection('comparisons');
 const sorted = comparisons.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+// Extract unique categories
+const allCats = [...new Set(comparisons.map(c => c.data.category))].sort();
+const catParam = Astro.url.searchParams.get('category') || 'All';
+const filtered = catParam === 'All' ? sorted : sorted.filter(c => c.data.category === catParam);
 ---
 
 <BaseLayout
@@ -14,11 +19,30 @@ const sorted = comparisons.sort((a, b) => b.data.pubDate.getTime() - a.data.pubD
   <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="text-3xl font-extrabold text-gray-900">Software Comparisons</h1>
     <p class="mt-2 text-gray-600">{comparisons.length} comparisons and growing.</p>
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map(c => (
-        <ArticleCard title={c.data.title} description={c.data.description}
-          slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
+
+    <!-- Category Filter -->
+    <div class="mt-6 flex flex-wrap gap-2">
+      <a href="/comparisons"
+        class={`rounded-full px-4 py-1.5 text-sm font-medium transition ${catParam === 'All' ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+        All
+      </a>
+      {allCats.map(cat => (
+        <a href={`/comparisons?category=${encodeURIComponent(cat)}`}
+          class={`rounded-full px-4 py-1.5 text-sm font-medium transition ${catParam === cat ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+          {cat}
+        </a>
       ))}
     </div>
+
+    {filtered.length === 0 ? (
+      <p class="mt-12 text-center text-gray-500">No comparisons in this category yet. <a href="/contact" class="text-brand-600 hover:underline">Suggest one?</a></p>
+    ) : (
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {filtered.map(c => (
+          <ArticleCard title={c.data.title} description={c.data.description}
+            slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
+        ))}
+      </div>
+    )}
   </section>
 </BaseLayout>

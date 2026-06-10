@@ -1,8 +1,8 @@
 ---
-title: "Best CRM for Small Business (2025)"
+title: "Best CRM for Small Business (2026)"
 description: "We tested and compared 12 CRM platforms for small businesses. Here are the top 5 based on pricing, ease of use, features, and scalability."
-pubDate: 2025-01-12
-updatedDate: 2025-01-15
+pubDate: 2026-01-12
+updatedDate: 2026-01-15
 category: "CRM"
 image: "/images/articles/best-crm-small-business.jpg"
 featured: true

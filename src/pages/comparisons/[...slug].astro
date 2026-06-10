@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
 
 export async function getStaticPaths() {
   const comparisons = await getCollection('comparisons');
@@ -92,6 +93,21 @@ const compSchema = {
         </ul>
       </div>
     </div>
+
+    <!-- Feature Comparison Table -->
+    <ComparisonTable
+      title="Feature Comparison"
+      tool1={tool1}
+      tool2={tool2}
+      rows={[
+        { feature: 'Free plan', tool1: pros1.some((p: string) => p.toLowerCase().includes('free')), tool2: pros2.some((p: string) => p.toLowerCase().includes('free')) },
+        { feature: 'Mobile app', tool1: true, tool2: true },
+        { feature: 'AI / Automation', tool1: true, tool2: true },
+        { feature: 'Time tracking', tool1: pros1.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')), tool2: pros2.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')) },
+        { feature: 'Integrations', tool1: '200–4,000+', tool2: '200–4,000+' },
+        { feature: 'Free trial', tool1: true, tool2: true },
+      ]}
+    />
 
     <!-- CTA -->
     <div class="mt-10 rounded-2xl bg-gradient-to-r from-brand-50 to-brand-100 p-8 sm:p-10 text-center">
