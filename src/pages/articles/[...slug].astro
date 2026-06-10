@@ -9,7 +9,19 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
-const headings = [{ text: entry.data.title, slug: 'overview', depth: 2 }];
+
+// Extract real headings from markdown for the table of contents
+const body = entry.body || '';
+const headingMatches = [...body.matchAll(/^(#{2,3})\s+(.+)$/gm)];
+const headings = headingMatches.map(m => {
+  const text = m[2].trim();
+  const depth = m[1].length;
+  const slug = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  return { text, slug, depth };
+});
 ---
 
 <ArticleLayout
@@ -20,6 +32,7 @@ const headings = [{ text: entry.data.title, slug: 'overview', depth: 2 }];
   updatedDate={entry.data.updatedDate}
   category={entry.data.category}
   headings={headings}
+  slug={entry.id}
 >
   <Content />
 </ArticleLayout>

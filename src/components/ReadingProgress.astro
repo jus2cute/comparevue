@@ -1,0 +1,20 @@
+---
+// ReadingProgress.astro — Thin animated progress bar at top of page
+// Shows reading progress as user scrolls — proven to increase time on page
+---
+
+<div id="reading-progress" class="fixed top-0 left-0 z-[100] h-1 w-0 bg-gradient-to-r from-brand-500 to-brand-600 transition-[width] duration-150 ease-out" aria-hidden="true"></div>
+
+<script>
+  const bar = document.getElementById('reading-progress');
+  if (bar) {
+    const update = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = Math.min(progress, 100) + '%';
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>

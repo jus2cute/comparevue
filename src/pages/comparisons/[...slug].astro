@@ -2,6 +2,10 @@
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ComparisonTable from '../../components/ComparisonTable.astro';
+import TableOfContents from '../../components/TableOfContents.astro';
+import ShareButton from '../../components/ShareButton.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
+import ReadingProgress from '../../components/ReadingProgress.astro';
 
 export async function getStaticPaths() {
   const comparisons = await getCollection('comparisons');
@@ -13,8 +17,10 @@ const { Content } = await render(entry);
 
 const tool1 = entry.data.tool1 || 'Tool 1';
 const tool2 = entry.data.tool2 || 'Tool 2';
+const category = entry.data.category || '';
 const pubDate = entry.data.pubDate;
 const updatedDate = entry.data.updatedDate || pubDate;
+const displayDate = updatedDate;
 
 const pros1: string[] = (entry.data as any).pros1 || [];
 const cons1: string[] = (entry.data as any).cons1 || [];
@@ -24,13 +30,56 @@ const verdictWinner = (entry.data as any).verdictWinner || '';
 const verdictReason = (entry.data as any).verdictReason || '';
 const verdictText = (entry.data as any).verdictText || '';
 
+// Generate the tool slug for affiliate links
+function toolSlug(name: string): string {
+  return name.toLowerCase().replace(/\s+/g, '-').replace('.com', '');
+}
+
+// Extract headings from markdown body for ToC
+const body = entry.body || '';
+const headingMatches = [...body.matchAll(/^(#{2,3})\s+(.+)$/gm)];
+const headings = headingMatches.map(m => {
+  const text = m[2].trim();
+  const depth = m[1].length;
+  const slug = text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  return { text, slug, depth };
+});
+
+// Has verdict section for "jump to" link
+const hasVerdict = !!verdictText;
+
+// Reading time
+const readTime = Math.ceil(body.length / 1800);
+const readTimeStr = readTime < 1 ? '1 min read' : readTime + ' min read';
+
+// BreadcrumbList structured data
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://comparevue.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Comparisons', item: 'https://comparevue.com/comparisons/' },
+    ...(category ? [{ '@type': 'ListItem', position: 3, name: category, item: 'https://comparevue.com/comparisons/' }] : []),
+    { '@type': 'ListItem', position: category ? 4 : 3, name: entry.data.title },
+  ],
+};
+
 const compSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   headline: entry.data.title,
   description: entry.data.description,
   datePublished: pubDate.toISOString(),
-  dateModified: updatedDate.toISOString(),
+  dateModified: displayDate.toISOString(),
+  author: { '@type': 'Person', name: 'CompareVue Editorial Team' },
+  publisher: { '@type': 'Organization', name: 'CompareVue' },
+  about: [
+    { '@type': 'SoftwareApplication', name: tool1 },
+    { '@type': 'SoftwareApplication', name: tool2 },
+  ],
 };
 ---
 
@@ -41,22 +90,62 @@ const compSchema = {
   articleModified={updatedDate}
   schema={compSchema}
 >
-  <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+  <ReadingProgress />
 
-    <span class="badge mb-4">{entry.data.category}</span>
-    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">{entry.data.title}</h1>
-    <p class="mt-4 text-lg text-gray-600">{entry.data.description}</p>
-    <div class="mt-6 text-sm text-gray-500">
-      Updated: <time datetime={updatedDate.toISOString().split('T')[0]}>
-        {updatedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-      </time>
+  <article class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <!-- Breadcrumbs -->
+    <nav class="mb-8 text-sm text-gray-400" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li><a href="/comparisons" class="hover:text-brand-600 transition-colors">Comparisons</a></li>
+        {category && <><li aria-hidden="true">/</li><li><a href="/comparisons" class="hover:text-brand-600 transition-colors">{category}</a></li></>}
+        <li aria-hidden="true">/</li>
+        <li class="text-gray-500 truncate max-w-[240px]" aria-current="page">{entry.data.title}</li>
+      </ol>
+    </nav>
+
+    <!-- Header -->
+    <header class="mb-10">
+      <span class="badge mb-4">{category}</span>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">{entry.data.title}</h1>
+      <p class="mt-4 text-lg text-gray-600">{entry.data.description}</p>
+      <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-500">
+        <time datetime={displayDate.toISOString().split('T')[0]}>
+          Updated {displayDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+        </time>
+        <span aria-hidden="true">·</span>
+        <span>{readTimeStr}</span>
+        <span aria-hidden="true">·</span>
+        <ShareButton />
+      </div>
+    </header>
+
+    <!-- Quick-nav: Jump links -->
+    <div class="mb-10 flex flex-wrap items-center gap-2 text-sm">
+      <span class="text-gray-400 font-medium">Jump to:</span>
+      <a href="#verdict" class="rounded-full bg-gray-100 px-3 py-1.5 text-gray-600 hover:bg-brand-100 hover:text-brand-700 transition-colors no-underline">
+        🏆 Verdict
+      </a>
+      <a href="#pros-cons" class="rounded-full bg-gray-100 px-3 py-1.5 text-gray-600 hover:bg-brand-100 hover:text-brand-700 transition-colors no-underline">
+        👍 Pros & Cons
+      </a>
+      <a href="#feature-comparison" class="rounded-full bg-gray-100 px-3 py-1.5 text-gray-600 hover:bg-brand-100 hover:text-brand-700 transition-colors no-underline">
+        📊 Feature Table
+      </a>
+      <a href="#pricing" class="rounded-full bg-gray-100 px-3 py-1.5 text-gray-600 hover:bg-brand-100 hover:text-brand-700 transition-colors no-underline">
+        💰 Pricing
+      </a>
+      <a href="#try-them" class="rounded-full bg-brand-100 px-3 py-1.5 text-brand-700 hover:bg-brand-200 transition-colors no-underline font-medium">
+        🚀 Try Them
+      </a>
     </div>
 
-    <!-- Verdict -->
+    <!-- Verdict Banner (top) -->
     {verdictText && (
-      <div class="mt-8 rounded-xl border-l-4 border-green-500 bg-green-50 p-6">
+      <div id="verdict" class="mt-6 rounded-xl border-l-4 border-green-500 bg-green-50 p-6 scroll-mt-24">
         <div class="flex items-start gap-3">
-          <span class="text-xl">🏆</span>
+          <span class="text-2xl">🏆</span>
           <div>
             <h2 class="text-lg font-bold text-gray-900">{verdictWinner} wins for {verdictReason}</h2>
             <p class="mt-1 text-gray-700">{verdictText}</p>
@@ -65,60 +154,135 @@ const compSchema = {
       </div>
     )}
 
-    <!-- Prose Content -->
-    <div class="prose prose-lg prose-gray mt-10 max-w-none">
-      <Content />
+    <!-- Layout: Sidebar + Content -->
+    <div class="flex gap-12">
+      <!-- Sidebar: Table of Contents -->
+      <aside class="hidden w-64 shrink-0 lg:block">
+        <div class="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
+          <h4 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4">On This Page</h4>
+          <TableOfContents headings={headings} />
+          <!-- Sticky CTA in sidebar -->
+          <div class="mt-6 rounded-xl bg-brand-50 p-4 border border-brand-100">
+            <p class="text-xs font-semibold text-brand-800 mb-2">Ready to decide?</p>
+            <a href="#try-them" class="inline-flex w-full justify-center rounded-lg bg-brand-600 px-4 py-2 text-xs font-semibold text-white hover:bg-brand-700 transition no-underline">
+              Compare {tool1} vs {tool2} →
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <div class="min-w-0 flex-1">
+        <!-- Prose content -->
+        <div class="prose prose-lg prose-gray max-w-none">
+          <Content />
+        </div>
+
+        <!-- Mobile ToC -->
+        <details class="mt-8 rounded-xl border border-gray-200 bg-gray-50 lg:hidden">
+          <summary class="cursor-pointer px-6 py-4 text-sm font-semibold uppercase tracking-wider text-gray-500 select-none">
+            On This Page
+          </summary>
+          <div class="px-6 pb-4"><TableOfContents headings={headings} /></div>
+        </details>
+
+        <!-- Pros/Cons -->
+        <div id="pros-cons" class="mt-10 grid gap-6 sm:grid-cols-2 scroll-mt-24">
+          <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
+            <h3 class="font-semibold text-green-800 mb-3 text-lg">✅ {tool1} Pros</h3>
+            <ul class="space-y-2">
+              {pros1.map((p: string) => (
+                <li class="flex gap-2 text-sm text-green-800">
+                  <svg class="w-4 h-4 text-green-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <h3 class="font-semibold text-red-800 mt-4 mb-3 text-lg">❌ {tool1} Cons</h3>
+            <ul class="space-y-2">
+              {cons1.map((c: string) => (
+                <li class="flex gap-2 text-sm text-red-800">
+                  <svg class="w-4 h-4 text-red-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
+            <h3 class="font-semibold text-green-800 mb-3 text-lg">✅ {tool2} Pros</h3>
+            <ul class="space-y-2">
+              {pros2.map((p: string) => (
+                <li class="flex gap-2 text-sm text-green-800">
+                  <svg class="w-4 h-4 text-green-600 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <h3 class="font-semibold text-red-800 mt-4 mb-3 text-lg">❌ {tool2} Cons</h3>
+            <ul class="space-y-2">
+              {cons2.map((c: string) => (
+                <li class="flex gap-2 text-sm text-red-800">
+                  <svg class="w-4 h-4 text-red-500 mt-0.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                  </svg>
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <!-- Feature Comparison Table -->
+        <div id="feature-comparison" class="scroll-mt-24">
+          <ComparisonTable
+            title="Feature Comparison"
+            tool1={tool1}
+            tool2={tool2}
+            rows={[
+              { feature: 'Free plan', tool1: pros1.some((p: string) => p.toLowerCase().includes('free')), tool2: pros2.some((p: string) => p.toLowerCase().includes('free')) },
+              { feature: 'Mobile app', tool1: true, tool2: true },
+              { feature: 'AI / Automation', tool1: true, tool2: true },
+              { feature: 'Time tracking', tool1: pros1.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')), tool2: pros2.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')) },
+              { feature: 'Integrations', tool1: '200–4,000+', tool2: '200–4,000+' },
+              { feature: 'Free trial', tool1: true, tool2: true },
+            ]}
+          />
+        </div>
+
+        <!-- CTA Section -->
+        <div id="try-them" class="mt-10 rounded-2xl bg-gradient-to-r from-brand-50 to-brand-100 p-8 sm:p-10 text-center scroll-mt-24">
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Ready to try them yourself?</h3>
+          <p class="text-gray-600 mb-5">
+            Both {tool1} and {tool2} offer free trials. Click below to explore — and help support CompareVue at no extra cost to you.
+          </p>
+          <div class="flex flex-wrap gap-3 justify-center">
+            <a href={'/go/' + toolSlug(tool1)} class="btn-primary text-lg px-8 py-3.5" rel="nofollow sponsored">
+              Try {tool1} Free →
+            </a>
+            <a href={'/go/' + toolSlug(tool2)} class="rounded-lg border-2 border-gray-300 bg-white px-8 py-3.5 text-lg font-semibold text-gray-700 transition hover:border-brand-300 hover:text-brand-600" rel="nofollow sponsored">
+              Try {tool2} Free →
+            </a>
+          </div>
+          <p class="mt-4 text-xs text-gray-400">We may earn a commission if you sign up through these links, at no extra cost to you.</p>
+        </div>
+
+        <!-- Share -->
+        <div class="mt-8 flex items-center justify-center gap-3">
+          <ShareButton />
+        </div>
+      </div>
     </div>
 
-    <!-- Pros/Cons -->
-    <div class="mt-10 grid gap-6 sm:grid-cols-2">
-      <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
-        <h3 class="font-semibold text-green-800 mb-3">✅ {tool1} Pros</h3>
-        <ul class="space-y-2">
-          {pros1.map((p: string) => <li class="flex gap-2 text-sm text-green-800"><span>✓</span> {p}</li>)}
-        </ul>
-        <h3 class="font-semibold text-red-800 mt-4 mb-3">❌ {tool1} Cons</h3>
-        <ul class="space-y-2">
-          {cons1.map((c: string) => <li class="flex gap-2 text-sm text-red-800"><span>✗</span> {c}</li>)}
-        </ul>
-      </div>
-      <div class="rounded-xl border border-green-200 bg-green-50/50 p-6">
-        <h3 class="font-semibold text-green-800 mb-3">✅ {tool2} Pros</h3>
-        <ul class="space-y-2">
-          {pros2.map((p: string) => <li class="flex gap-2 text-sm text-green-800"><span>✓</span> {p}</li>)}
-        </ul>
-        <h3 class="font-semibold text-red-800 mt-4 mb-3">❌ {tool2} Cons</h3>
-        <ul class="space-y-2">
-          {cons2.map((c: string) => <li class="flex gap-2 text-sm text-red-800"><span>✗</span> {c}</li>)}
-        </ul>
-      </div>
-    </div>
+    <!-- Related Comparisons -->
+    <RelatedContent currentSlug={entry.id} category={category} type="comparisons" />
 
-    <!-- Feature Comparison Table -->
-    <ComparisonTable
-      title="Feature Comparison"
-      tool1={tool1}
-      tool2={tool2}
-      rows={[
-        { feature: 'Free plan', tool1: pros1.some((p: string) => p.toLowerCase().includes('free')), tool2: pros2.some((p: string) => p.toLowerCase().includes('free')) },
-        { feature: 'Mobile app', tool1: true, tool2: true },
-        { feature: 'AI / Automation', tool1: true, tool2: true },
-        { feature: 'Time tracking', tool1: pros1.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')), tool2: pros2.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')) },
-        { feature: 'Integrations', tool1: '200–4,000+', tool2: '200–4,000+' },
-        { feature: 'Free trial', tool1: true, tool2: true },
-      ]}
-    />
-
-    <!-- CTA -->
-    <div class="mt-10 rounded-2xl bg-gradient-to-r from-brand-50 to-brand-100 p-8 sm:p-10 text-center">
-      <h3 class="text-xl font-bold text-gray-900 mb-2">Ready to try them yourself?</h3>
-      <p class="text-gray-600 mb-5">Both tools offer free trials. Click below to explore.</p>
-      <div class="flex flex-wrap gap-3 justify-center">
-        <a href="/go/{tool1.toLowerCase().replace(/\s+/g,'-').replace('.com','')}" class="btn-primary" rel="nofollow">Try {tool1} →</a>
-        <a href="/go/{tool2.toLowerCase().replace(/\s+/g,'-').replace('.com','')}" class="rounded-lg border border-gray-300 px-5 py-3 font-semibold text-gray-700 transition hover:bg-gray-50" rel="nofollow">Try {tool2} →</a>
-      </div>
-      <p class="mt-4 text-xs text-gray-400">We may earn a commission if you sign up, at no extra cost to you.</p>
-    </div>
-
+    <!-- Breadcrumb schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)}></script>
   </article>
 </BaseLayout>
