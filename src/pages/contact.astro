@@ -6,8 +6,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
     <h1 class="text-3xl font-extrabold text-gray-900">Contact Us</h1>
     <p class="mt-4 text-lg text-gray-600">Have a tool you'd like us to compare? Found an error? Want to collaborate? We'd love to hear from you.</p>
+
     <div class="mt-10 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-      <form class="space-y-5" action="https://formspree.io/f/your-form-id" method="POST">
+      <form class="space-y-5" action="https://formspree.io/f/xldjvzbb" method="POST">
         <div>
           <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
           <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="Your name" />
@@ -22,6 +23,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
         <button type="submit" class="btn-primary">Send Message</button>
       </form>
+    </div>
+
+    <div class="mt-8 text-center text-sm text-gray-500">
+      Or email us directly at <a href="mailto:hello@comparevue.com" class="text-brand-600 font-medium hover:underline">hello@comparevue.com</a>
     </div>
   </section>
 </BaseLayout>
