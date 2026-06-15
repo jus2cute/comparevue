@@ -6,34 +6,51 @@ import ArticleCard from '../../components/ArticleCard.astro';
 const comparisons = await getCollection('comparisons');
 const sorted = comparisons.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const allCats = [...new Set(comparisons.map(c => c.data.category))].sort();
+const countByCat = Object.fromEntries(allCats.map(cat => [cat, comparisons.filter(c => c.data.category === cat).length]));
 ---
 
 <BaseLayout
-  title="Software Comparisons"
-  description="Head-to-head SaaS comparisons across CRM, project management, finance, marketing, and more."
+  title="Software Comparisons 2026 — Compare Top SaaS Tools"
+  description={`${comparisons.length} head-to-head SaaS comparisons across CRM, project management, productivity, and more. Real pricing, feature tables, and verdicts.`}
 >
   <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-extrabold text-gray-900">Software Comparisons</h1>
-    <p class="mt-2 text-gray-600">{comparisons.length} comparisons and growing.</p>
+    <!-- Breadcrumbs -->
+    <nav class="mb-8 text-sm text-gray-400" aria-label="Breadcrumb">
+      <ol class="flex items-center gap-2 flex-wrap">
+        <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+        <li aria-hidden="true">/</li>
+        <li class="text-gray-500" aria-current="page">Comparisons</li>
+      </ol>
+    </nav>
 
-    <div class="mt-6 flex flex-wrap gap-2">
-      <span class="rounded-full px-4 py-1.5 text-sm font-medium bg-brand-600 text-white">All</span>
+    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Software Comparisons</h1>
+    <p class="mt-3 max-w-2xl text-lg text-gray-600">{comparisons.length} head-to-head comparisons with real pricing, feature breakdowns, and honest verdicts.</p>
+
+    <div class="mt-8 flex flex-wrap gap-2">
+      <span class="rounded-full px-4 py-1.5 text-sm font-medium bg-brand-600 text-white">All ({comparisons.length})</span>
       {allCats.map(cat => {
         const slug = cat.toLowerCase().replace(/\s+/g, '-');
+        const n = countByCat[cat] || 0;
         return (
           <a href={`/comparisons/${slug}`}
             class="rounded-full px-4 py-1.5 text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">
-            {cat}
+            {cat} ({n})
           </a>
         );
       })}
     </div>
 
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map(c => (
-        <ArticleCard title={c.data.title} description={c.data.description}
-          slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
-      ))}
-    </div>
+    {comparisons.length === 0 ? (
+      <div class="mt-16 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
+        <p class="text-gray-500 text-lg">No comparisons yet. Check back soon!</p>
+      </div>
+    ) : (
+      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {sorted.map(c => (
+          <ArticleCard title={c.data.title} description={c.data.description}
+            slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
+        ))}
+      </div>
+    )}
   </section>
 </BaseLayout>
