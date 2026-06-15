@@ -21,28 +21,79 @@ const filtered = catParam === 'All' ? sorted : sorted.filter(c => c.data.categor
     <p class="mt-2 text-gray-600">{comparisons.length} comparisons and growing.</p>
 
     <!-- Category Filter -->
-    <div class="mt-6 flex flex-wrap gap-2">
-      <a href="/comparisons"
-        class={`rounded-full px-4 py-1.5 text-sm font-medium transition ${catParam === 'All' ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+    <div class="mt-6 flex flex-wrap gap-2" id="category-filters">
+      <button data-category="All"
+        class="filter-btn rounded-full px-4 py-1.5 text-sm font-medium transition bg-brand-600 text-white">
         All
-      </a>
+      </button>
       {allCats.map(cat => (
-        <a href={`/comparisons?category=${encodeURIComponent(cat)}`}
-          class={`rounded-full px-4 py-1.5 text-sm font-medium transition ${catParam === cat ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+        <button data-category={cat}
+          class="filter-btn rounded-full px-4 py-1.5 text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">
           {cat}
-        </a>
+        </button>
       ))}
     </div>
 
-    {filtered.length === 0 ? (
-      <p class="mt-12 text-center text-gray-500">No comparisons in this category yet. <a href="/contact" class="text-brand-600 hover:underline">Suggest one?</a></p>
-    ) : (
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filtered.map(c => (
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" id="comparison-grid">
+      {sorted.map(c => (
+        <div class="comparison-card" data-category={c.data.category}>
           <ArticleCard title={c.data.title} description={c.data.description}
             slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
-        ))}
-      </div>
-    )}
+        </div>
+      ))}
+    </div>
+
+    <p id="no-results" class="mt-12 text-center text-gray-500 hidden">No comparisons in this category yet. <a href="/contact" class="text-brand-600 hover:underline">Suggest one?</a></p>
+
+    <script>
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.comparison-card');
+      const noResults = document.getElementById('no-results');
+      const grid = document.getElementById('comparison-grid');
+
+      // Read initial category from URL
+      const params = new URLSearchParams(window.location.search);
+      const activeCat = params.get('category') || 'All';
+
+      function filter(category) {
+        let visible = 0;
+        cards.forEach(card => {
+          if (category === 'All' || card.dataset.category === category) {
+            card.style.display = '';
+            visible++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        noResults.classList.toggle('hidden', visible > 0);
+        grid.classList.toggle('hidden', visible === 0);
+
+        // Update active button
+        buttons.forEach(btn => {
+          const isActive = btn.dataset.category === category;
+          btn.classList.toggle('bg-brand-600', isActive);
+          btn.classList.toggle('text-white', isActive);
+          btn.classList.toggle('bg-gray-100', !isActive);
+          btn.classList.toggle('text-gray-600', !isActive);
+        });
+
+        // Update URL without reload
+        const url = new URL(window.location);
+        if (category === 'All') {
+          url.searchParams.delete('category');
+        } else {
+          url.searchParams.set('category', category);
+        }
+        window.history.replaceState({}, '', url);
+      }
+
+      // Apply initial filter from URL
+      filter(activeCat);
+
+      // Click handlers
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => filter(btn.dataset.category));
+      });
+    </script>
   </section>
 </BaseLayout>
