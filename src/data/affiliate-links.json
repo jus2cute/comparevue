@@ -1,57 +1,81 @@
 {
   "monday": {
     "name": "Monday.com",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://monday.com",
-    "placeholder": true
+    "baseUrl": "https://monday.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   },
   "asana": {
     "name": "Asana",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://asana.com",
-    "placeholder": true
+    "baseUrl": "https://asana.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   },
   "hubspot": {
     "name": "HubSpot",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://hubspot.com",
-    "placeholder": true
+    "baseUrl": "https://hubspot.com",
+    "partnerStackId": null,
+    "directProgram": "impact",
+    "impactId": null,
+    "note": "Applied via Impact.com — pending"
   },
   "salesforce": {
     "name": "Salesforce",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://salesforce.com",
-    "placeholder": true
+    "baseUrl": "https://salesforce.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   },
   "pipedrive": {
     "name": "Pipedrive",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://pipedrive.com",
-    "placeholder": true
+    "baseUrl": "https://pipedrive.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   },
   "zoho-crm": {
     "name": "Zoho CRM",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://zoho.com/crm",
-    "placeholder": true
+    "baseUrl": "https://zoho.com/crm",
+    "partnerStackId": null,
+    "directProgram": "zoho-affiliate",
+    "directUrl": null,
+    "note": "Direct affiliate program at zoho.com/affiliate — 15% commission, 90-day cookie. Apply directly, not through PartnerStack."
   },
   "freshsales": {
     "name": "Freshsales",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://freshworks.com/freshsales",
-    "placeholder": true
+    "baseUrl": "https://freshworks.com/freshsales",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   },
   "notion": {
     "name": "Notion",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://notion.so",
-    "placeholder": true
+    "baseUrl": "https://notion.so",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Notion affiliate program CLOSED to new applicants as of 2026 (via PartnerStack)"
   },
   "confluence": {
     "name": "Confluence",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://atlassian.com/confluence",
-    "placeholder": true
+    "baseUrl": "https://atlassian.com/confluence",
+    "partnerStackId": null,
+    "directProgram": "flexoffers",
+    "note": "Atlassian products available via FlexOffers.com (independent network)"
   },
   "clickup": {
     "name": "ClickUp",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://clickup.com",
-    "placeholder": true
+    "baseUrl": "https://clickup.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "ClickUp partners page redirects to PartnerStack — pending application"
   },
   "wrike": {
     "name": "Wrike",
-    "url": "https://partnerstack.com/redirect?id=YOUR_PARTNERSTACK_ID&url=https://wrike.com",
-    "placeholder": true
+    "baseUrl": "https://wrike.com",
+    "partnerStackId": null,
+    "directProgram": null,
+    "note": "Managed via PartnerStack — pending application"
   }
 }
