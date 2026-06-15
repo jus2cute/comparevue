@@ -77,5 +77,19 @@
     "partnerStackId": null,
     "directProgram": null,
     "note": "Managed via PartnerStack — pending application"
+  },
+  "jira": {
+    "name": "Jira",
+    "baseUrl": "https://atlassian.com/software/jira",
+    "partnerStackId": null,
+    "directProgram": "flexoffers",
+    "note": "Atlassian products available via FlexOffers.com — Jira, Confluence, Trello"
+  },
+  "trello": {
+    "name": "Trello",
+    "baseUrl": "https://trello.com",
+    "partnerStackId": null,
+    "directProgram": "flexoffers",
+    "note": "Atlassian product — available via FlexOffers.com"
   }
 }
