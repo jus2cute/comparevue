@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparisons');
+  const allCats = [...new Set(comparisons.map(c => c.data.category))].sort();
+  return allCats.map(cat => ({ params: { category: cat.toLowerCase().replace(/\s+/g, '-') }, props: { category: cat } }));
+}
+
+const { category } = Astro.props;
+const comparisons = await getCollection('comparisons');
+const filtered = comparisons
+  .filter(c => c.data.category === category)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const allCats = [...new Set(comparisons.map(c => c.data.category))].sort();
+---
+
+<BaseLayout
+  title={`${category} Comparisons`}
+  description={`Head-to-head ${category.toLowerCase()} tool comparisons — real pricing, features, and verdicts.`}
+>
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-extrabold text-gray-900">{category} Comparisons</h1>
+    <p class="mt-2 text-gray-600">{filtered.length} comparisons in {category.toLowerCase()}.</p>
+
+    <div class="mt-6 flex flex-wrap gap-2">
+      <a href="/comparisons" class="rounded-full px-4 py-1.5 text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">← All</a>
+      {allCats.map(cat => {
+        const slug = cat.toLowerCase().replace(/\s+/g, '-');
+        const isActive = cat === category;
+        return (
+          <a href={`/comparisons/${slug}`}
+            class={`rounded-full px-4 py-1.5 text-sm font-medium transition ${isActive ? 'bg-brand-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}>
+            {cat}
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {filtered.map(c => (
+        <ArticleCard title={c.data.title} description={c.data.description}
+          slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
+      ))}
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/comparisons" class="text-brand-600 hover:underline font-medium">← Back to all comparisons</a>
+    </div>
+  </section>
+</BaseLayout>
