@@ -1,4 +1,5 @@
 ---
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import affiliateLinks from '../../data/affiliate-links.json';
 
 export async function getStaticPaths() {
@@ -9,8 +10,6 @@ export async function getStaticPaths() {
 const { tool } = Astro.params;
 const link = affiliateLinks[tool as keyof typeof affiliateLinks];
 
-// Build redirect URL with UTM tracking
-// Priority: direct affiliate URL > baseUrl with UTM params
 let redirectUrl: string;
 if (link?.directUrl) {
   redirectUrl = link.directUrl;
@@ -26,16 +25,79 @@ const toolName = link?.name || tool;
 <!doctype html>
 <html lang="en">
 <head>
-<!-- Impact site verification — must be first in <head> -->
-<meta name="impact-site-verification" value="5f9d5c67-21fd-436e-ab92-c70b0ac92bb6" />
-<meta charset="UTF-8" />
-<meta name="robots" content="noindex, nofollow" />
-<meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-<link rel="canonical" href={redirectUrl} />
-<title>Redirecting to {toolName}…</title>
-<style>body{font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;color:#555;background:#fafafa}</style>
+  <meta name="impact-site-verification" value="5f9d5c67-21fd-436e-ab92-c70b0ac92bb6" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+  <link rel="canonical" href={redirectUrl} />
+  <title>Taking you to {toolName}… | CompareVue</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #f0f9ff 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e293b;
+    }
+    .card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 3rem 2.5rem;
+      max-width: 440px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 20px 60px rgba(37,99,235,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 800;
+      color: #1e293b;
+      margin-bottom: 1.5rem;
+    }
+    .logo span:first-child { color: #2563eb; }
+    .spinner {
+      width: 2.5rem;
+      height: 2.5rem;
+      border: 3px solid #dbeafe;
+      border-top-color: #2563eb;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin: 0 auto 1.5rem;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h1 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+    p { color: #64748b; font-size: 0.9375rem; line-height: 1.5; }
+    .tool-name { color: #2563eb; font-weight: 600; }
+    .link { display: inline-block; margin-top: 1.25rem; color: #2563eb; font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
+    .link:hover { color: #1d4ed8; text-decoration: underline; }
+    .disclaimer { margin-top: 1.5rem; font-size: 0.75rem; color: #94a3b8; }
+  </style>
 </head>
 <body>
-<p style="text-align:center;max-width:400px">Taking you to <strong>{toolName}</strong>…<br><small>If you aren't redirected, <a href={redirectUrl}>click here</a>.</small></p>
+  <div class="card">
+    <div class="logo">
+      <span>⚡</span>
+      <span>CompareVue</span>
+    </div>
+    <div class="spinner"></div>
+    <h1>Taking you to <span class="tool-name">{toolName}</span></h1>
+    <p>You'll be redirected automatically. We may earn a commission if you sign up — at no extra cost to you.</p>
+    <a href={redirectUrl} class="link">Click here if nothing happens →</a>
+    <div class="disclaimer">CompareVue · Independent Software Reviews</div>
+  </div>
 </body>
 </html>
