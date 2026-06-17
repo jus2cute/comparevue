@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "depends on budget sensitivity and ecosystem needs"
 verdictText: "For teams that want an intuitive all-in-one platform and can afford the premium, HubSpot wins. For budget-conscious teams that need enterprise features and deep customization, Zoho CRM delivers dramatically more for the money."
+features:
+  - feature: "Free plan"
+    tool1: "Unlimited users"
+    tool2: "Up to 3 users"
+  - feature: "Starting price"
+    tool1: "$15/user/mo"
+    tool2: "$14/user/mo"
+  - feature: "AI features"
+    tool1: true
+    tool2: true
+  - feature: "Built-in marketing"
+    tool1: true
+    tool2: "Via Zoho Campaigns"
+  - feature: "Customization depth"
+    tool1: "Moderate"
+    tool2: "Deep"
+  - feature: "Integrations"
+    tool1: "1,500+"
+    tool2: "500+"
+  - feature: "Best for"
+    tool1: "Growing teams"
+    tool2: "Budget-conscious SMBs"
 ---
 
 # HubSpot vs Zoho CRM (2026): Premium Polish or Budget Power — Which CRM Wins?

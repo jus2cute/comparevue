@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "HubSpot"
 verdictReason: "small-to-mid-size businesses"
 verdictText: "If you're under 50 employees, start with HubSpot. You'll get up and running faster and cheaper. If you're a 200+ person org with complex sales processes and a dedicated ops team, Salesforce earns its reputation — but budget for the real cost, not just the subscription."
+features:
+  - feature: "Free plan"
+    tool1: true
+    tool2: false
+  - feature: "Starting price"
+    tool1: "$15/user/mo"
+    tool2: "$25/user/mo"
+  - feature: "AI features"
+    tool1: true
+    tool2: true
+  - feature: "Mobile app"
+    tool1: true
+    tool2: true
+  - feature: "Integrations"
+    tool1: "1,500+"
+    tool2: "4,000+"
+  - feature: "Free trial"
+    tool1: "Free plan"
+    tool2: "30-day trial"
+  - feature: "Best for"
+    tool1: "SMB to mid-market"
+    tool2: "Mid-market to enterprise"
 ---
 
 ## The Hidden Cost of Salesforce

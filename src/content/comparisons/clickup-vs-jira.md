@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "depends on whether your team is engineering-led or cross-functional"
 verdictText: "For cross-functional teams that want one platform for everything, ClickUp wins on versatility and value. For engineering-led teams running agile sprints, Jira wins on developer depth and agile tooling."
+features:
+  - feature: "Free plan"
+    tool1: "Unlimited users"
+    tool2: "Up to 10 users"
+  - feature: "Starting price"
+    tool1: "$7/user/mo"
+    tool2: "$8.15/user/mo"
+  - feature: "Sprint planning"
+    tool1: false
+    tool2: true
+  - feature: "Built-in docs/wiki"
+    tool1: true
+    tool2: false
+  - feature: "Time tracking"
+    tool1: true
+    tool2: "Via add-on"
+  - feature: "Git integrations"
+    tool1: "Basic"
+    tool2: "Deep CI/CD"
+  - feature: "Best for"
+    tool1: "Cross-functional teams"
+    tool2: "Engineering teams"
 ---
 
 # ClickUp vs Jira (2026): The All-in-One Contender Takes on the Agile King

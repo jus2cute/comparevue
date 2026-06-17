@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Asana"
 verdictReason: "most small-to-mid-size teams"
 verdictText: "For teams of 3-15 people who want to spend $0 and get started immediately, Asana wins. If your team is 2-5 people and you're willing to pay for serious customization and visual dashboards, go with Monday.com."
+features:
+  - feature: "Free plan"
+    tool1: "Up to 2 seats"
+    tool2: "Up to 15 users"
+  - feature: "Starting price"
+    tool1: "$9/user/mo"
+    tool2: "$10.99/user/mo"
+  - feature: "Built-in time tracking"
+    tool1: false
+    tool2: true
+  - feature: "Visual dashboards"
+    tool1: "Full customization"
+    tool2: "Standard"
+  - feature: "Automations"
+    tool1: "200+ templates"
+    tool2: "Built-in rules"
+  - feature: "Gantt/Timeline"
+    tool1: true
+    tool2: true
+  - feature: "Best for"
+    tool1: "Visual/creative teams"
+    tool2: "Structured workflows"
 ---
 
 ## Who Should Use Monday.com?
