@@ -40,7 +40,7 @@ const allCats = [...new Set(articles.map(a => a.data.category))].sort();
           const rt = Math.max(1, Math.ceil(a.data.description.length / 120));
           return (
           <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
-            date={a.data.pubDate} category={a.data.category} readTime={rt + ' min read'} />
+            date={a.data.pubDate} updatedDate={a.data.updatedDate} category={a.data.category} readTime={rt + ' min read'} />
         )})}
       </div>
     )}

@@ -72,7 +72,7 @@ const catLower = category.toLowerCase();
           const rt = Math.max(1, Math.ceil(c.data.description.length / 120));
           return (
           <ArticleCard title={c.data.title} description={c.data.description}
-            slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} readTime={rt + ' min read'} />
+            slug={'/comparisons/' + c.id} date={c.data.pubDate} updatedDate={c.data.updatedDate} category={c.data.category} readTime={rt + ' min read'} />
         )})}
       </div>
     )}
