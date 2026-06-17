@@ -15,10 +15,12 @@ const sorted = articles.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate
     <h1 class="text-3xl font-extrabold text-gray-900">All Articles</h1>
     <p class="mt-2 text-gray-600">{articles.length} articles and counting.</p>
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map(a => (
+      {sorted.map(a => {
+        const rt = Math.max(1, Math.ceil(a.data.description.length / 120));
+        return (
         <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
-          date={a.data.pubDate} category={a.data.category} />
-      ))}
+          date={a.data.pubDate} category={a.data.category} readTime={rt + ' min read'} />
+      )})}
     </div>
   </section>
 </BaseLayout>

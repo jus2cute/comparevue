@@ -4,6 +4,7 @@ const nav = [
   { label: 'Articles', href: '/articles' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
+  { label: 'Search', href: '/search' },
 ];
 ---
 <header class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-md">
@@ -12,6 +13,8 @@ const nav = [
       <span class="text-brand-600">⚡</span>
       <span>CompareVue</span>
     </a>
+
+    <!-- Desktop nav -->
     <nav class="hidden items-center gap-8 md:flex">
       {nav.map(item => (
         <a href={item.href} class="text-sm font-medium text-gray-600 transition hover:text-brand-600">
@@ -19,8 +22,39 @@ const nav = [
         </a>
       ))}
     </nav>
-    <button class="md:hidden" aria-label="Menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+
+    <!-- Mobile hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition" aria-label="Open menu" aria-expanded="false">
+      <svg id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <svg id="menu-icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu" class="hidden md:hidden border-t border-gray-100 bg-white">
+    <nav class="flex flex-col px-4 py-4 gap-1">
+      {nav.map(item => (
+        <a href={item.href} class="rounded-lg px-4 py-3 text-base font-medium text-gray-700 transition hover:bg-brand-50 hover:text-brand-600">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
+
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('hidden');
+      openIcon?.classList.toggle('hidden', !isOpen);
+      closeIcon?.classList.toggle('hidden', isOpen);
+      btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+      btn.setAttribute('aria-label', isOpen ? 'Open menu' : 'Close menu');
+    });
+  }
+</script>

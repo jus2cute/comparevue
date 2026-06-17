@@ -29,11 +29,13 @@ const toolName = link?.name || tool;
 <!-- Impact site verification — must be first in <head> -->
 <meta name="impact-site-verification" value="5f9d5c67-21fd-436e-ab92-c70b0ac92bb6" />
 <meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
 <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
 <link rel="canonical" href={redirectUrl} />
 <title>Redirecting to {toolName}…</title>
+<style>body{font-family:system-ui,sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;color:#555;background:#fafafa}</style>
 </head>
 <body>
-<p>Redirecting to <a href={redirectUrl}>{toolName}</a>…</p>
+<p style="text-align:center;max-width:400px">Taking you to <strong>{toolName}</strong>…<br><small>If you aren't redirected, <a href={redirectUrl}>click here</a>.</small></p>
 </body>
 </html>

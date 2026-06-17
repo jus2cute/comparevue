@@ -16,7 +16,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  body { @apply bg-white text-gray-900 antialiased; }
+  body { @apply bg-white text-gray-900 antialiased font-sans; font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
   .prose .comparison-table { }
 }
 

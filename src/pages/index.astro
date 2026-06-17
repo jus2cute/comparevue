@@ -72,10 +72,12 @@ const siteSchema = {
         <a href="/comparisons" class="text-sm font-semibold text-brand-600 hover:text-brand-700">View all {comparisons.length} →</a>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {topComps.map(c => (
+        {topComps.map(c => {
+          const rt = Math.max(1, Math.ceil(c.data.description.length / 120));
+          return (
           <ArticleCard title={c.data.title} description={c.data.description}
-            slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} />
-        ))}
+            slug={'/comparisons/' + c.id} date={c.data.pubDate} category={c.data.category} readTime={rt + ' min read'} />
+        )})}
       </div>
     </div>
   </section>
@@ -91,10 +93,12 @@ const siteSchema = {
         <a href="/articles" class="text-sm font-semibold text-brand-600 hover:text-brand-700">View all {articles.length} →</a>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {topArts.map(a => (
+        {topArts.map(a => {
+          const rt = Math.max(1, Math.ceil(a.data.description.length / 120));
+          return (
           <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
-            date={a.data.pubDate} category={a.data.category} />
-        ))}
+            date={a.data.pubDate} category={a.data.category} readTime={rt + ' min read'} />
+        )})}
       </div>
     </div>
   </section>

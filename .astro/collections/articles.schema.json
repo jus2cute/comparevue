@@ -48,7 +48,7 @@
         },
         "image": {
           "type": "string",
-          "default": "/images/og-default.png"
+          "default": "/images/og-default.svg"
         },
         "featured": {
           "type": "boolean",
