@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "features-per-dollar vs adoption speed"
 verdictText: "For teams that want maximum features for the money and are willing to configure their tool, ClickUp wins. For teams that prioritize visual clarity and fast adoption, Monday.com wins."
+features:
+  - feature: "Free plan"
+    tool1: "Unlimited users"
+    tool2: "Up to 2 seats"
+  - feature: "Starting price"
+    tool1: "$7/user/mo"
+    tool2: "$9/user/mo"
+  - feature: "Built-in docs/wiki"
+    tool1: true
+    tool2: false
+  - feature: "Built-in time tracking"
+    tool1: true
+    tool2: "Add-on"
+  - feature: "Visual quality"
+    tool1: "Functional"
+    tool2: "Beautiful"
+  - feature: "Automation templates"
+    tool1: "100+"
+    tool2: "200+"
+  - feature: "Best for"
+    tool1: "Power users"
+    tool2: "Visual thinkers"
 ---
 
 # ClickUp vs Monday.com (2026): All-in-One Power or Polished Specialization?

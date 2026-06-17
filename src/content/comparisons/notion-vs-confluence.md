@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Notion"
 verdictReason: "most small-to-mid-size teams"
 verdictText: "For most small teams and non-technical departments, Notion wins on flexibility and user experience. For engineering orgs already committed to the Atlassian stack, Confluence is the natural choice and well worth it."
+features:
+  - feature: "Free plan"
+    tool1: "Unlimited pages"
+    tool2: "Up to 10 users"
+  - feature: "Starting price"
+    tool1: "$10/user/mo"
+    tool2: "$6.05/user/mo"
+  - feature: "Database views"
+    tool1: "6+ views"
+    tool2: "Tables only"
+  - feature: "Jira integration"
+    tool1: "Via embed"
+    tool2: "Native deep link"
+  - feature: "Modern UI"
+    tool1: true
+    tool2: false
+  - feature: "Templates"
+    tool1: "10,000+ community"
+    tool2: "100+ built-in"
+  - feature: "Best for"
+    tool1: "Startups & SMBs"
+    tool2: "Atlassian orgs"
 ---
 
 ## The Collaboration Difference

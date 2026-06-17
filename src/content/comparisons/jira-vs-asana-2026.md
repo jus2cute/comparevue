@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "depends on whether your team is engineering-led"
 verdictText: "For software engineering teams, Jira is the clear winner with sprint planning and dev integrations. For marketing, operations, and cross-functional teams, Asana wins on ease of use and adoption speed."
+features:
+  - feature: "Sprint planning"
+    tool1: true
+    tool2: false
+  - feature: "Free plan"
+    tool1: "Up to 10 users"
+    tool2: "Up to 15 users"
+  - feature: "Starting price"
+    tool1: "$8.15/user/mo"
+    tool2: "$10.99/user/mo"
+  - feature: "Built-in OKRs"
+    tool1: false
+    tool2: true
+  - feature: "Dev integrations"
+    tool1: "Deep CI/CD"
+    tool2: "Basic"
+  - feature: "Bug tracking"
+    tool1: true
+    tool2: false
+  - feature: "Best for"
+    tool1: "Engineering teams"
+    tool2: "Cross-functional teams"
 ---
 
 # Jira vs Asana (2026): Developer Project Management or Generalist PM — Which One Fits?

@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "depends on team type and regulatory needs"
 verdictText: "For creative agencies and regulated industries, Wrike wins with proofing and compliance. For product teams and goal-driven organizations, Asana wins with usability and OKR tracking."
+features:
+  - feature: "Free plan"
+    tool1: "Limited free"
+    tool2: "Up to 15 users"
+  - feature: "Starting price"
+    tool1: "$9.80/user/mo"
+    tool2: "$10.99/user/mo"
+  - feature: "Proofing/Approvals"
+    tool1: true
+    tool2: "Basic"
+  - feature: "Resource management"
+    tool1: true
+    tool2: "Add-on"
+  - feature: "HIPAA/FedRAMP"
+    tool1: true
+    tool2: false
+  - feature: "Ease of onboarding"
+    tool1: "Steeper"
+    tool2: "Easier"
+  - feature: "Best for"
+    tool1: "Agencies & enterprise"
+    tool2: "Product teams"
 ---
 
 # Wrike vs Asana (2026): Which Project Management Tool Actually Fits Your Team?

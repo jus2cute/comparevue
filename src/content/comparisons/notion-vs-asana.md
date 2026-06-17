@@ -30,6 +30,28 @@ cons2:
 verdictWinner: "Split"
 verdictReason: "depends on your team's primary work: documentation or task management"
 verdictText: "For documentation-first teams building wikis, knowledge bases, and flexible databases, Notion wins. For task-driven teams that need structured project management with goal tracking, Asana wins."
+features:
+  - feature: "Core strength"
+    tool1: "Docs + databases"
+    tool2: "Task management"
+  - feature: "Free plan"
+    tool1: "Unlimited pages"
+    tool2: "Up to 15 users"
+  - feature: "Starting price"
+    tool1: "$10/user/mo"
+    tool2: "$10.99/user/mo"
+  - feature: "Gantt/Dependencies"
+    tool1: false
+    tool2: true
+  - feature: "Wiki/knowledge base"
+    tool1: true
+    tool2: false
+  - feature: "Goal tracking"
+    tool1: "Database-based"
+    tool2: "Native OKRs"
+  - feature: "Best for"
+    tool1: "Documentation teams"
+    tool2: "Task-driven teams"
 ---
 
 # Notion vs Asana (2026): Flexible Workspace or Structured Project Management — Which One Fits?
