@@ -27,6 +27,16 @@ const pros1: string[] = (entry.data as any).pros1 || [];
 const cons1: string[] = (entry.data as any).cons1 || [];
 const pros2: string[] = (entry.data as any).pros2 || [];
 const cons2: string[] = (entry.data as any).cons2 || [];
+const features = (entry.data as any).features;
+const featureRows = features && features.length > 0 ? features : [
+  { feature: 'Free plan', tool1: pros1.some((p: string) => p.toLowerCase().includes('free')), tool2: pros2.some((p: string) => p.toLowerCase().includes('free')) },
+  { feature: 'Mobile app', tool1: true, tool2: true },
+  { feature: 'AI / Automation', tool1: true, tool2: true },
+  { feature: 'Time tracking', tool1: pros1.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')), tool2: pros2.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')) },
+  { feature: 'Integrations', tool1: '200–4,000+', tool2: '200–4,000+' },
+  { feature: 'Free trial', tool1: true, tool2: true },
+];
+
 const verdictWinner = (entry.data as any).verdictWinner || '';
 const verdictReason = (entry.data as any).verdictReason || '';
 const verdictText = (entry.data as any).verdictText || '';
@@ -312,14 +322,7 @@ const compSchema = {
               title="Feature Comparison"
               tool1={tool1}
               tool2={tool2}
-              rows={[
-                { feature: 'Free plan', tool1: pros1.some((p: string) => p.toLowerCase().includes('free')), tool2: pros2.some((p: string) => p.toLowerCase().includes('free')) },
-                { feature: 'Mobile app', tool1: true, tool2: true },
-                { feature: 'AI / Automation', tool1: true, tool2: true },
-                { feature: 'Time tracking', tool1: pros1.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')), tool2: pros2.some((p: string) => p.toLowerCase().includes('time tracking') || p.toLowerCase().includes('built-in')) },
-                { feature: 'Integrations', tool1: '200–4,000+', tool2: '200–4,000+' },
-                { feature: 'Free trial', tool1: true, tool2: true },
-              ]}
+              rows={featureRows}
             />
           </div>
 

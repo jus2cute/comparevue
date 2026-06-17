@@ -95,6 +95,35 @@
         "verdictText": {
           "type": "string"
         },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "feature": {
+                "type": "string"
+              },
+              "tool1": {
+                "type": [
+                  "string",
+                  "boolean"
+                ]
+              },
+              "tool2": {
+                "type": [
+                  "string",
+                  "boolean"
+                ]
+              }
+            },
+            "required": [
+              "feature",
+              "tool1",
+              "tool2"
+            ],
+            "additionalProperties": false
+          }
+        },
         "$schema": {
           "type": "string"
         }

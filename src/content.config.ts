@@ -36,6 +36,11 @@ const comparisonsCollection = defineCollection({
     verdictWinner: z.string().optional(),
     verdictReason: z.string().optional(),
     verdictText: z.string().optional(),
+    features: z.array(z.object({
+      feature: z.string(),
+      tool1: z.union([z.string(), z.boolean()]),
+      tool2: z.union([z.string(), z.boolean()]),
+    })).optional(),
   }),
 });
 
