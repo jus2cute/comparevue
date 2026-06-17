@@ -54,6 +54,15 @@
           "type": "boolean",
           "default": false
         },
+        "takeaways": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "heroImage": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }

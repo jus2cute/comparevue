@@ -11,6 +11,8 @@ const articlesCollection = defineCollection({
     category: z.string(),
     image: z.string().default('/images/og-default.svg'),
     featured: z.boolean().default(false),
+    takeaways: z.array(z.string()).optional(),
+    heroImage: z.string().optional(),
   }),
 });
 

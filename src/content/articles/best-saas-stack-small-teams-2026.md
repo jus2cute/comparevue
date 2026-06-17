@@ -5,6 +5,12 @@ pubDate: 2026-06-16
 updatedDate: 2026-06-16
 category: "Best-Of"
 image: "/images/og-default.svg"
+takeaways:
+  - "A complete SaaS stack for a 5-person team costs as little as $45/month using free tiers"
+  - "HubSpot CRM (free) + ClickUp (free) + Slack (free) covers 80% of what most small teams need"
+  - "Zoho CRM is the budget alternative to HubSpot — enterprise features at SMB pricing"
+  - "Notion replaces Google Docs + a wiki + a lightweight database for most small teams"
+  - "Only upgrade when you hit actual limits — free tiers are genuinely capable in 2026"
 ---
 
 # Best SaaS Stack for Small Teams (2026): The Only Tools You Actually Need

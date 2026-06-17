@@ -33,6 +33,8 @@ const headings = headingMatches.map(m => {
   category={entry.data.category}
   headings={headings}
   slug={entry.id}
+  takeaways={(entry.data as any).takeaways}
+  heroImage={(entry.data as any).heroImage}
 >
   <Content />
 </ArticleLayout>
