@@ -13,27 +13,33 @@ const countByCat = Object.fromEntries(allCats.map(cat => [cat, comparisons.filte
   title="Software Comparisons 2026 — Compare Top SaaS Tools"
   description={`${comparisons.length} head-to-head SaaS comparisons across CRM, project management, productivity, and more. Real pricing, feature tables, and verdicts.`}
 >
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">Comparisons</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">Software Comparisons</h1>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">{comparisons.length} head-to-head comparisons with real pricing, feature breakdowns, and honest verdicts — no fluff.</p>
+    </div>
+  </header>
+
+  <!-- ═══ Content ═══ -->
   <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <!-- Breadcrumbs -->
-    <nav class="mb-8 text-sm text-gray-400" aria-label="Breadcrumb">
-      <ol class="flex items-center gap-2 flex-wrap">
-        <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
-        <li aria-hidden="true">/</li>
-        <li class="text-gray-500" aria-current="page">Comparisons</li>
-      </ol>
-    </nav>
-
-    <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Software Comparisons</h1>
-    <p class="mt-3 max-w-2xl text-lg text-gray-600">{comparisons.length} head-to-head comparisons with real pricing, feature breakdowns, and honest verdicts.</p>
-
-    <div class="mt-8 flex flex-wrap gap-2">
-      <span class="rounded-full px-4 py-1.5 text-sm font-medium bg-brand-600 text-white">All ({comparisons.length})</span>
+    <!-- Category filter pills -->
+    <div class="flex flex-wrap gap-2 mb-12">
+      <span class="rounded-full px-4 py-2 text-sm font-semibold bg-brand-600 text-white shadow-sm">All ({comparisons.length})</span>
       {allCats.map(cat => {
         const slug = cat.toLowerCase().replace(/\s+/g, '-');
         const n = countByCat[cat] || 0;
         return (
           <a href={`/comparisons/${slug}`}
-            class="rounded-full px-4 py-1.5 text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-gray-200">
+            class="rounded-full px-4 py-2 text-sm font-medium transition bg-gray-100 text-gray-600 hover:bg-brand-50 hover:text-brand-600">
             {cat} ({n})
           </a>
         );
@@ -41,11 +47,11 @@ const countByCat = Object.fromEntries(allCats.map(cat => [cat, comparisons.filte
     </div>
 
     {comparisons.length === 0 ? (
-      <div class="mt-16 rounded-2xl border border-dashed border-gray-300 bg-gray-50 p-12 text-center">
+      <div class="rounded-2xl border border-dashed border-gray-200 bg-gray-50 p-16 text-center">
         <p class="text-gray-500 text-lg">No comparisons yet. Check back soon!</p>
       </div>
     ) : (
-      <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {sorted.map(c => {
           const rt = Math.max(1, Math.ceil(c.data.description.length / 120));
           return (

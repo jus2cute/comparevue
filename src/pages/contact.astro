@@ -2,31 +2,51 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="Contact Us" description="Get in touch with CompareVue. Suggest a comparison, report an error, or just say hello.">
-  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-extrabold text-gray-900">Contact Us</h1>
-    <p class="mt-4 text-lg text-gray-600">Have a tool you'd like us to compare? Found an error? Want to collaborate? We'd love to hear from you.</p>
+<BaseLayout
+  title="Contact Us"
+  description="Get in touch with CompareVue. Suggest a comparison, report an error, or just say hello."
+>
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">Contact</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">Contact Us</h1>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">Have a tool you'd like us to compare? Found an error? Want to collaborate? We'd love to hear from you.</p>
+    </div>
+  </header>
 
-    <div class="mt-10 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-      <form class="space-y-5" action="https://formspree.io/f/mlgkwjyk" method="POST">
+  <!-- ═══ Content ═══ -->
+  <section class="mx-auto max-w-2xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="rounded-2xl border border-gray-200 bg-white p-8 sm:p-10 shadow-sm">
+      <form class="space-y-6" action="https://formspree.io/f/mlgkwjyk" method="POST">
         <div>
-          <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
-          <input type="text" name="name" id="name" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="Your name" />
+          <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Name</label>
+          <input type="text" name="name" id="name" required class="block w-full rounded-xl border border-gray-300 px-4 py-3.5 shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition" placeholder="Your name" />
         </div>
         <div>
-          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-          <input type="email" name="email" id="email" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="you@example.com" />
+          <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+          <input type="email" name="email" id="email" required class="block w-full rounded-xl border border-gray-300 px-4 py-3.5 shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition" placeholder="you@example.com" />
         </div>
         <div>
-          <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-          <textarea name="message" id="message" rows="5" required class="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-3 shadow-sm focus:border-brand-500 focus:ring-brand-500" placeholder="Tell us what's on your mind..."></textarea>
+          <label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Message</label>
+          <textarea name="message" id="message" rows="5" required class="block w-full rounded-xl border border-gray-300 px-4 py-3.5 shadow-sm focus:border-brand-500 focus:ring-2 focus:ring-brand-200 focus:outline-none transition" placeholder="Tell us what's on your mind..."></textarea>
         </div>
-        <button type="submit" class="btn-primary">Send Message</button>
+        <button type="submit" class="inline-flex items-center gap-2 rounded-xl bg-brand-600 px-8 py-3.5 text-sm font-bold text-white hover:bg-brand-700 transition shadow-lg shadow-brand-600/20 hover:shadow-xl hover:shadow-brand-600/30">
+          Send Message
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+        </button>
       </form>
     </div>
 
-    <div class="mt-8 text-center text-sm text-gray-500">
-      Or email us directly at <a href="mailto:hello@comparevue.com" class="text-brand-600 font-medium hover:underline">hello@comparevue.com</a>
-    </div>
+    <p class="mt-8 text-center text-sm text-gray-400">
+      Or email us directly at <a href="mailto:hello@comparevue.com" class="text-brand-600 font-semibold hover:underline">hello@comparevue.com</a>
+    </p>
   </section>
 </BaseLayout>

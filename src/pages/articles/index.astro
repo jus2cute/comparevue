@@ -5,22 +5,44 @@ import ArticleCard from '../../components/ArticleCard.astro';
 
 const articles = await getCollection('articles');
 const sorted = articles.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const allCats = [...new Set(articles.map(a => a.data.category))].sort();
 ---
 
 <BaseLayout
-  title="All Articles"
-  description="In-depth guides, best-of lists, and how-tos covering CRM, project management, finance, and more SaaS tools."
+  title="Articles & Guides — SaaS Buying Advice"
+  description={`${articles.length} in-depth guides, best-of lists, and how-tos covering CRM, project management, email marketing, and more SaaS tools.`}
 >
-  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-extrabold text-gray-900">All Articles</h1>
-    <p class="mt-2 text-gray-600">{articles.length} articles and counting.</p>
-    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      {sorted.map(a => {
-        const rt = Math.max(1, Math.ceil(a.data.description.length / 120));
-        return (
-        <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
-          date={a.data.pubDate} category={a.data.category} readTime={rt + ' min read'} />
-      )})}
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">Articles</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">Articles & Guides</h1>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">{articles.length} in-depth guides, best-of lists, and how-tos — researched and written for real users, not algorithms.</p>
     </div>
+  </header>
+
+  <!-- ═══ Content ═══ -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    {articles.length === 0 ? (
+      <div class="rounded-2xl border border-dashed border-gray-200 bg-gray-50 p-16 text-center">
+        <p class="text-gray-500 text-lg">No articles yet. Check back soon!</p>
+      </div>
+    ) : (
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {sorted.map(a => {
+          const rt = Math.max(1, Math.ceil(a.data.description.length / 120));
+          return (
+          <ArticleCard title={a.data.title} description={a.data.description} slug={a.id}
+            date={a.data.pubDate} category={a.data.category} readTime={rt + ' min read'} />
+        )})}
+      </div>
+    )}
   </section>
 </BaseLayout>
