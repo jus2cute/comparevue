@@ -1,6 +1,0 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-
-# Netlify will serve each route's index.html automatically.
-# Only explicit redirects needed for moved/legacy URLs go below.
