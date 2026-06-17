@@ -1,48 +1,47 @@
 ---
-// ComparisonTable.astro — Side-by-side feature table with visual checkmarks/crosses
 export interface Props {
   title?: string;
   tool1: string;
   tool2: string;
   rows: Array<{
     feature: string;
-    tool1: string | boolean; // true/false for check/cross, string for text
+    tool1: string | boolean;
     tool2: string | boolean;
   }>;
 }
 
 const { title, tool1, tool2, rows } = Astro.props;
 
-function render(value: string | boolean, isFirst?: boolean): string {
+function renderCell(value: string | boolean): string {
   if (typeof value === 'boolean') {
-    if (value) return `<span class="inline-flex items-center gap-1 text-green-600 font-medium"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>Yes</span>`;
-    return `<span class="inline-flex items-center gap-1 text-red-400"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>No</span>`;
+    if (value) return `<span class="inline-flex items-center gap-1.5 text-green-600 font-semibold"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg><span class="text-xs">Yes</span></span>`;
+    return `<span class="inline-flex items-center gap-1.5 text-red-400"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg><span class="text-xs">No</span></span>`;
   }
-  return String(value);
+  return `<span class="text-sm text-gray-700">${String(value)}</span>`;
 }
 ---
 
-<div class="my-8 overflow-hidden rounded-xl border border-gray-200">
+<div class="my-12 overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
   {title && (
-    <div class="border-b border-gray-200 bg-brand-50 px-6 py-4">
+    <div class="border-b border-gray-200 bg-gradient-to-r from-brand-50 to-blue-50 px-6 py-5">
       <h3 class="text-lg font-bold text-gray-900">{title}</h3>
     </div>
   )}
   <div class="overflow-x-auto">
-    <table class="w-full text-left text-sm">
+    <table class="w-full text-left">
       <thead>
-        <tr class="border-b-2 border-gray-200 bg-gray-50">
-          <th class="px-6 py-3 font-semibold text-gray-700 text-xs uppercase tracking-wider">Feature</th>
-          <th class="px-6 py-3 font-semibold text-brand-600 text-xs uppercase tracking-wider">{tool1}</th>
-          <th class="px-6 py-3 font-semibold text-gray-700 text-xs uppercase tracking-wider">{tool2}</th>
+        <tr class="border-b-2 border-gray-200 bg-gray-50/80">
+          <th class="px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wider">Feature</th>
+          <th class="px-6 py-4 font-bold text-brand-600 text-xs uppercase tracking-wider bg-brand-50/40">{tool1}</th>
+          <th class="px-6 py-4 font-semibold text-gray-500 text-xs uppercase tracking-wider">{tool2}</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody class="divide-y divide-gray-100">
         {rows.map((row, i) => (
-          <tr class={`border-b border-gray-100 transition-colors hover:bg-gray-50/50 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/30'}`}>
-            <td class="px-6 py-3.5 font-medium text-gray-700">{row.feature}</td>
-            <td class="px-6 py-3.5"><span set:html={render(row.tool1)} /></td>
-            <td class="px-6 py-3.5"><span set:html={render(row.tool2)} /></td>
+          <tr class="transition-colors hover:bg-brand-50/20">
+            <td class="px-6 py-4 text-sm font-medium text-gray-700">{row.feature}</td>
+            <td class="px-6 py-4 bg-brand-50/10"><span set:html={renderCell(row.tool1)} /></td>
+            <td class="px-6 py-4"><span set:html={renderCell(row.tool2)} /></td>
           </tr>
         ))}
       </tbody>
