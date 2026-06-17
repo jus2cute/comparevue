@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="Sorry, we couldn't find that page."
+  noindex={true}
+>
+  <section class="flex-1 flex items-center justify-center">
+    <div class="mx-auto max-w-lg px-4 py-24 sm:py-32 text-center">
+      <!-- 404 illustration -->
+      <div class="mb-8">
+        <div class="inline-flex items-center justify-center w-24 h-24 rounded-3xl bg-brand-50 border border-brand-100 shadow-sm">
+          <svg class="w-12 h-12 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z"/>
+          </svg>
+        </div>
+      </div>
+
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Page not found</h1>
+      <p class="mt-4 text-lg text-gray-500 leading-relaxed">
+        We couldn't find the page you're looking for. It might have been moved or the URL might be mistyped.
+      </p>
+
+      <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/" class="btn-primary w-full sm:w-auto justify-center">← Back to Home</a>
+        <a href="/search" class="w-full sm:w-auto rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-700 hover:bg-gray-50 transition text-center">Search Site</a>
+      </div>
+
+      <div class="mt-12">
+        <p class="text-sm text-gray-400 mb-5">Or explore popular pages:</p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="/comparisons" class="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Comparisons</a>
+          <a href="/articles" class="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Articles</a>
+          <a href="/about" class="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">About</a>
+          <a href="/contact" class="rounded-full bg-gray-100 px-4 py-1.5 text-sm text-gray-600 hover:bg-brand-50 hover:text-brand-600 transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
