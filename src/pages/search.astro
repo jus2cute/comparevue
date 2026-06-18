@@ -33,6 +33,18 @@ const searchSchema = {
     'query-input': 'required name=search_term_string',
   },
 };
+
+// Popular search suggestions
+const popular = [
+  { term: 'CRM', label: 'CRM tools' },
+  { term: 'HubSpot', label: 'HubSpot' },
+  { term: 'ClickUp', label: 'ClickUp' },
+  { term: 'project management', label: 'Project Management' },
+  { term: 'Asana', label: 'Asana' },
+  { term: 'Salesforce', label: 'Salesforce' },
+  { term: 'Notion', label: 'Notion' },
+  { term: 'email marketing', label: 'Email Marketing' },
+];
 ---
 
 <BaseLayout
@@ -52,13 +64,13 @@ const searchSchema = {
         </ol>
       </nav>
       <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">Search</h1>
-      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">Find comparisons and guides across {all.length} pages.</p>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">Search across {all.length} comparisons and guides.</p>
     </div>
   </header>
 
   <!-- ═══ Content ═══ -->
   <section class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-    <div class="relative mb-12">
+    <div class="relative mb-8">
       <svg class="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
       </svg>
@@ -72,10 +84,20 @@ const searchSchema = {
       />
     </div>
 
+    <!-- Popular quick links -->
+    <div class="mb-10">
+      <p class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">Popular Searches</p>
+      <div class="flex flex-wrap gap-2">
+        {popular.map(p => (
+          <button type="button" class="quick-chip rounded-full border border-gray-200 bg-white px-4 py-2 text-sm text-gray-600 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 transition cursor-pointer" data-query={p.term}>{p.label}</button>
+        ))}
+      </div>
+    </div>
+
     <div id="search-stats" class="mb-4 text-sm text-gray-400 hidden"></div>
 
     <div id="search-results" class="space-y-3">
-      <p class="text-sm text-gray-400 py-12 text-center">Start typing to search…</p>
+      <p class="text-sm text-gray-400 py-12 text-center">Start typing to search or pick a popular topic above…</p>
     </div>
   </section>
 </BaseLayout>
@@ -93,7 +115,7 @@ const searchSchema = {
   function search(query) {
     const q = query.toLowerCase().trim();
     if (!q) {
-      results.innerHTML = '<p class="text-sm text-gray-400 py-12 text-center">Start typing to search…</p>';
+      results.innerHTML = '<p class="text-sm text-gray-400 py-12 text-center">Start typing to search or pick a popular topic above…</p>';
       stats.classList.add('hidden');
       return;
     }
@@ -132,6 +154,16 @@ const searchSchema = {
     div.textContent = str;
     return div.innerHTML;
   }
+
+  // Quick chip buttons
+  document.querySelectorAll('.quick-chip').forEach(function(chip) {
+    chip.addEventListener('click', function() {
+      var q = this.getAttribute('data-query');
+      input.value = q;
+      input.focus();
+      search(q);
+    });
+  });
 
   input && input.addEventListener('input', function(e) { search(e.target.value); });
 
