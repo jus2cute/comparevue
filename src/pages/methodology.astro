@@ -1,0 +1,152 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="How We Test & Rate Software — Our Methodology | CompareVue"
+  description="Every tool on CompareVue is tested hands-on. Here's exactly how we evaluate, score, and compare SaaS products — no marketing fluff, no pay-for-placement."
+>
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">Methodology</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">How We Test & Rate Software</h1>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">Every comparison on CompareVue is built on hands-on testing, not spec-sheet comparisons. Here's exactly what that means.</p>
+      <p class="mt-2 text-sm text-gray-400">Last updated: July 2026 &middot; Review cycle: Every 90 days</p>
+    </div>
+  </header>
+
+  <!-- ═══ Content ═══ -->
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="prose prose-lg prose-gray max-w-none
+      prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-gray-900
+      prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5
+      prose-p:leading-relaxed prose-p:text-gray-700
+      prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+      prose-strong:text-gray-900 prose-strong:font-semibold
+      prose-li:marker:text-gray-400
+    ">
+
+      <h2>The Testing Process</h2>
+
+      <h3>1. We Sign Up and Use Every Tool</h3>
+      <p>We don't read documentation and call it a review. For every tool we compare, we create an account — free trial, free plan, or paid subscription — and use it for real projects. We configure workflows, set up automations, invite team members, and push each tool past its onboarding demo into actual daily use.</p>
+
+      <h3>2. We Test Real-World Scenarios</h3>
+      <p>Every comparison is built around the same set of real-world scenarios relevant to that category. For project management tools, we run a two-week sprint. For CRMs, we build a sales pipeline from lead to close. For email marketing tools, we configure an automation sequence and measure deliverability. Same test, different tools — that's how you get an honest comparison.</p>
+
+      <h3>3. We Check What Breaks</h3>
+      <p>A tool that works in a demo might fall apart under real conditions. We test:</p>
+      <ul>
+        <li>What happens when you add 50+ users?</li>
+        <li>How does the mobile app handle poor connectivity?</li>
+        <li>What's the actual support response time — not the marketing SLA?</li>
+        <li>Do integrations work or are they flimsy Zapier workarounds?</li>
+        <li>Can you export your data if you want to leave?</li>
+      </ul>
+
+      <h3>4. We Verify Pricing — Not Just List Prices</h3>
+      <p>The sticker price is rarely what you'll actually pay. We dig into:</p>
+      <ul>
+        <li>Required add-ons (SSO often costs extra, storage limits force upgrades)</li>
+        <li>Per-user vs per-seat math (a $10/user tool for 50 people = $500/month)</li>
+        <li>Annual vs monthly billing differences</li>
+        <li>Hidden costs: implementation, training, migration, ongoing admin overhead</li>
+      </ul>
+
+      <h2>Rating Criteria & Weights</h2>
+      <p>Every tool is scored across five dimensions. Weights vary slightly by category, but here's the standard framework:</p>
+
+      <div class="my-8 space-y-4 not-prose">
+        <div class="rounded-xl border border-gray-200 bg-white p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">🧩 Ease of Use</h3>
+            <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">25%</span>
+          </div>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">How fast can a new team get productive? Is the interface intuitive or does it require training? We measure time-to-first-value — the gap between signup and meaningful work. Tools that require consultants or multi-week onboarding get dinged here.</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">⚙️ Features & Depth</h3>
+            <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">30%</span>
+          </div>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Does the tool actually solve the core problem? Are features polished or checkbox items? We distinguish between "has the feature" and "the feature works well." A tool with 50 half-baked features scores lower than one with 20 excellent ones.</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">💰 Pricing & Value</h3>
+            <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">20%</span>
+          </div>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Is the value proportional to the cost? We calculate total cost of ownership for teams of 5, 25, and 100 users — not just the entry-level price. Free plans get credit, but only if they're genuinely usable long-term (not crippled trials).</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">🔗 Integrations & Ecosystem</h3>
+            <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">15%</span>
+          </div>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">Does it connect to the tools your team already uses? We test native integrations (built by the vendor) vs third-party connectors (Zapier/Make). Native integrations score higher. We also check API quality and documentation for teams that need custom connections.</p>
+        </div>
+
+        <div class="rounded-xl border border-gray-200 bg-white p-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold text-gray-900">🛟 Support & Reliability</h3>
+            <span class="rounded-full bg-brand-100 px-3 py-1 text-xs font-semibold text-brand-700">10%</span>
+          </div>
+          <p class="mt-2 text-sm text-gray-600 leading-relaxed">What happens when something breaks? We measure support response times (real-world, not marketing SLAs), check uptime history via status pages, and evaluate documentation quality. Mobile app quality, offline support, and data portability also factor in.</p>
+        </div>
+      </div>
+
+      <h2>How We Stay Current</h2>
+      <p>SaaS tools change fast. Pricing flips, features launch, APIs break. A comparison from six months ago is already stale. Here's our update policy:</p>
+      <ul>
+        <li><strong>Scheduled reviews:</strong> Every comparison is re-evaluated at least every 90 days. We re-test key workflows, verify pricing, and update screenshots.</li>
+        <li><strong>Trigger updates:</strong> Major pricing changes, feature launches, or acquisitions trigger an immediate review — we don't wait for the 90-day cycle.</li>
+        <li><strong>Last updated date:</strong> Every comparison page shows when it was last reviewed. If you see a date older than 90 days, we're already working on the update.</li>
+        <li><strong>Reader corrections:</strong> If you spot outdated pricing or a feature that changed, <a href="/contact">tell us</a>. We verify and update within 48 hours.</li>
+      </ul>
+
+      <h2>How We Make Money (Transparency)</h2>
+      <p>Some links on CompareVue are affiliate links. If you click through and buy a subscription, we may earn a commission — at no extra cost to you.</p>
+      <p>Here's what that means for our reviews:</p>
+      <ul>
+        <li><strong>Affiliate status does not affect rankings.</strong> We review tools whether or not they have an affiliate program. Several tools we recommend have no affiliate program at all.</li>
+        <li><strong>No tool company has ever paid for placement, edited our content, or influenced our verdicts.</strong> If a tool wins a comparison, it earned it.</li>
+        <li><strong>We disclose affiliate relationships</strong> on every page that contains affiliate links, plus in our site-wide footer.</li>
+      </ul>
+      <p>Have questions about our revenue model? <a href="/contact">We're happy to answer them.</a></p>
+    </div>
+
+    <!-- ═══ CTA ═══ -->
+    <div class="mt-16 rounded-2xl bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 p-10 sm:p-12 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="relative">
+        <h3 class="text-2xl font-bold text-white mb-3">See our methodology in action</h3>
+        <p class="text-brand-200/90 max-w-md mx-auto">Every comparison page is built on this process — browse the library and see for yourself.</p>
+        <div class="mt-6">
+          <a href="/comparisons" class="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-brand-700 hover:bg-brand-50 transition shadow-lg shadow-black/10">
+            Browse Comparisons
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-100 text-center">
+      <p class="text-sm text-gray-400">
+        This methodology was last reviewed on July 3, 2026.
+        &middot;
+        See our <a href="/editorial-policy" class="text-brand-600 hover:underline">Editorial Policy</a> for how we select topics and manage corrections.
+      </p>
+    </footer>
+  </section>
+</BaseLayout>

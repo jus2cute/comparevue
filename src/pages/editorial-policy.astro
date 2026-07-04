@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Editorial Policy — How We Write | CompareVue"
+  description="How we select topics, maintain independence, handle corrections, and ensure every comparison is honest and useful. No pay-for-placement, ever."
+>
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">Editorial Policy</li>
+        </ol>
+      </nav>
+      <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">Editorial Policy</h1>
+      <p class="mt-4 text-lg sm:text-xl text-gray-500 max-w-2xl text-pretty">How we choose what to cover, how we write it, and the rules that keep CompareVue independent and trustworthy.</p>
+      <p class="mt-2 text-sm text-gray-400">Last updated: July 2026</p>
+    </div>
+  </header>
+
+  <!-- ═══ Content ═══ -->
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="prose prose-lg prose-gray max-w-none
+      prose-headings:font-extrabold prose-headings:tracking-tight prose-headings:text-gray-900
+      prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5
+      prose-p:leading-relaxed prose-p:text-gray-700
+      prose-a:text-brand-600 prose-a:no-underline hover:prose-a:underline prose-a:font-medium
+      prose-strong:text-gray-900 prose-strong:font-semibold
+      prose-li:marker:text-gray-400
+    ">
+
+      <h2>Editorial Independence</h2>
+      <p>CompareVue is editorially independent. Our comparisons, guides, and verdicts are based solely on hands-on testing and research. No software vendor has editorial control over our content — period.</p>
+
+      <div class="my-8 rounded-2xl border border-brand-200 bg-brand-50/50 p-6">
+        <p class="text-sm font-semibold text-brand-800 mb-2">🚫 Our non-negotiables:</p>
+        <ul class="space-y-1 text-sm text-brand-700/80">
+          <li>We <strong>never</strong> accept payment for placement or ranking.</li>
+          <li>Vendors <strong>cannot</strong> review, edit, or approve our content before publication.</li>
+          <li>Affiliate commissions <strong>do not</strong> influence verdicts.</li>
+          <li>If a vendor sponsors content (rare), it is <strong>clearly labeled</strong> as sponsored.</li>
+        </ul>
+      </div>
+
+      <h2>How We Choose What to Cover</h2>
+      <p>We don't pick topics based on affiliate commission rates or vendor relationships. Our editorial calendar is driven by three things:</p>
+      <ol>
+        <li><strong>Reader demand.</strong> We track what people search for, what questions come through our contact form, and which comparisons get the most engagement. If readers want a comparison we haven't written, it moves up the list.</li>
+        <li><strong>Category importance.</strong> We prioritize tools that teams actually use — CRM, project management, email marketing, documentation. Niche categories get covered when the core categories are well-served.</li>
+        <li><strong>Market changes.</strong> When a major tool launches, gets acquired, or significantly changes pricing or features, we reprioritize to keep our content relevant.</li>
+      </ol>
+
+      <h2>Writing Standards</h2>
+
+      <h3>Every Comparison Gets a Verdict</h3>
+      <p>We don't do "both tools are great, it depends" cop-outs. Every head-to-head comparison ends with a clear recommendation: which tool wins, for which team, and why. If the answer genuinely is "it depends," we break it down by use case — "X wins for small teams, Y wins for enterprise."</p>
+
+      <h3>We Cite Prices — Not Marketing</h3>
+      <p>We quote real prices from the vendor's public pricing page at the time of review. We don't quote "starting at" numbers without explaining what that actually gets you. When pricing is opaque ("contact sales"), we say so.</p>
+
+      <h3>No AI-Generated Content</h3>
+      <p>Every comparison and guide on CompareVue is written by a human who tested the tools. We don't publish AI-generated content. AI may assist with research summaries or grammar checks, but the analysis, verdicts, and voice are human.</p>
+
+      <h3>Plagiarism-Free</h3>
+      <p>All content is original. We don't republish vendor marketing pages, rewrite competitor comparisons, or scrape user reviews. If we reference external data (like G2 ratings or vendor case studies), we cite the source.</p>
+
+      <h2>Corrections Policy</h2>
+      <p>We get things wrong sometimes. When we do, here's what happens:</p>
+      <ul>
+        <li><strong>Minor corrections</strong> (typos, formatting, broken links): Fixed immediately without a correction note — unless the error changes meaning.</li>
+        <li><strong>Factual corrections</strong> (wrong pricing, misstated feature, incorrect date): Fixed within 48 hours of verification. A correction note is added at the bottom of the article with the date and nature of the change.</li>
+        <li><strong>Major corrections</strong> (verdict change, significant factual error): Fixed within 24 hours. Article receives a prominent correction notice at the top, and the "last updated" date is refreshed.</li>
+      </ul>
+      <p>To report an error: <a href="/contact">contact us</a> or email <span class="text-brand-600">corrections@comparevue.com</span>.</p>
+
+      <h2>Affiliate & Advertising Policy</h2>
+      <p>CompareVue participates in affiliate programs, including but not limited to PartnerStack, Impact, and direct vendor partnerships. This means we may earn a commission when you click a link and purchase a subscription.</p>
+      <p>Key points:</p>
+      <ul>
+        <li>Affiliate links are clearly disclosed on pages that contain them.</li>
+        <li>Commissions come at no additional cost to you.</li>
+        <li>We do not accept "paid placement" or "sponsored ranking" — no vendor can buy a higher position in our comparisons or best-of lists.</li>
+        <li>If a vendor sponsors a piece of content (e.g., a sponsored guide), it is clearly labeled as "Sponsored" at the top of the page.</li>
+        <li>Sponsored content is separate from editorial content and does not appear in our comparison sections.</li>
+      </ul>
+
+      <h2>Reader Privacy</h2>
+      <p>We respect your privacy. See our full <a href="/privacy">Privacy Policy</a>. In short:</p>
+      <ul>
+        <li>We don't sell or share personal data.</li>
+        <li>We use analytics to understand which content helps readers — not to track individuals.</li>
+        <li>Our newsletter (when you subscribe) is used only for the content you signed up for.</li>
+        <li>Affiliate links may use cookies to track conversions, as required by the affiliate program.</li>
+      </ul>
+    </div>
+
+    <!-- ═══ CTA ═══ -->
+    <div class="mt-16 rounded-2xl bg-gradient-to-br from-brand-600 via-brand-700 to-brand-800 p-10 sm:p-12 text-center relative overflow-hidden">
+      <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 28px 28px;"></div>
+      <div class="relative">
+        <h3 class="text-2xl font-bold text-white mb-3">Questions about our policies?</h3>
+        <p class="text-brand-200/90 max-w-md mx-auto">We're transparent about how we operate. If anything's unclear, reach out.</p>
+        <div class="mt-6">
+          <a href="/contact" class="inline-flex items-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-brand-700 hover:bg-brand-50 transition shadow-lg shadow-black/10">
+            Contact Us
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-100 text-center">
+      <p class="text-sm text-gray-400">
+        This editorial policy was last reviewed on July 3, 2026.
+        &middot;
+        See our <a href="/methodology" class="text-brand-600 hover:underline">Testing Methodology</a> for how we evaluate tools.
+      </p>
+    </footer>
+  </section>
+</BaseLayout>

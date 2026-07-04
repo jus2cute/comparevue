@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const author = {
+  name: "Justin Guindi",
+  role: "Founder & Lead Reviewer",
+  photo: "/images/authors/justin-guindi.jpg",
+  bio: `Justin Guindi has been in the SaaS business for 3 years, testing and working
+with tools across project management, CRM, and marketing automation. He started
+CompareVue to cut through the noise of sponsored rankings and AI-generated
+listicles — building a comparison site where every tool is tested hands-on and
+the best product wins on merit, not ad spend.`,
+  linkedin: "",
+  twitter: "",
+};
+---
+
+<BaseLayout
+  title={`${author.name} — Author at CompareVue`}
+  description={`${author.name} is ${author.role.toLowerCase()} at CompareVue. ${author.bio.slice(0, 150)}...`}
+>
+  <!-- ═══ Hero ═══ -->
+  <header class="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-white">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: radial-gradient(circle, #2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+    <div class="relative mx-auto max-w-4xl px-4 pt-14 sm:pt-20 pb-10 sm:pb-14 sm:px-6 lg:px-8">
+      <nav class="mb-6 text-sm text-gray-400" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-brand-600 transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a href="/about" class="hover:text-brand-600 transition-colors">About</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-gray-500" aria-current="page">{author.name}</li>
+        </ol>
+      </nav>
+
+      <div class="flex flex-col items-center text-center sm:flex-row sm:items-start sm:text-left gap-6">
+        <div class="flex-shrink-0">
+          <div class="h-32 w-32 rounded-full bg-brand-100 flex items-center justify-center overflow-hidden border-4 border-brand-100">
+            <span class="text-5xl">👤</span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-3xl font-extrabold text-gray-900 sm:text-4xl lg:text-5xl tracking-tight">{author.name}</h1>
+          <p class="mt-2 text-lg font-medium text-brand-600">{author.role}</p>
+          <p class="mt-4 text-gray-600 leading-relaxed max-w-xl">{author.bio}</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ═══ Articles by Author ═══ -->
+  <section class="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight mb-8">
+      Articles by {author.name.split(" ")[0]}
+    </h2>
+
+    <div class="rounded-2xl border border-gray-200 bg-gray-50/50 p-8 text-center">
+      <p class="text-gray-500 text-sm leading-relaxed">
+        This section will automatically list all comparisons and articles by {author.name.split(" ")[0]}
+        once the author field is added to the content collection schema.
+      </p>
+      <p class="mt-2 text-xs text-gray-400">
+        Add <code class="bg-gray-200 px-1.5 py-0.5 rounded text-gray-600">author: "{author.name}"</code> to each
+        article's frontmatter to enable automatic listing here.
+      </p>
+    </div>
+
+    <!-- Back link -->
+    <div class="mt-12 pt-8 border-t border-gray-100 text-center">
+      <a href="/about" class="text-sm text-brand-600 hover:underline font-medium">
+        ← Meet the rest of the team
+      </a>
+    </div>
+  </section>
+</BaseLayout>
