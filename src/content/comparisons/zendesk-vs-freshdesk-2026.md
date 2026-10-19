@@ -1,6 +1,6 @@
 ---
 title: "Zendesk vs Freshdesk (2026): The Help Desk Heavyweight Showdown We Actually Tested"
-description: "Zendesk vs Freshdesk comparison for 2026: real pricing at 10/25/50 agents, AI features, knowledge base, and honest verdict on which help desk wins for your team size."
+description: "Zendesk vs Freshdesk comparison for 2026: real pricing at 10/25/50 agents, AI features, knowledge base, and honest verdict on which help desk wins for your team"
 pubDate: 2026-07-04
 updatedDate: 2026-07-04
 category: "Help Desk"

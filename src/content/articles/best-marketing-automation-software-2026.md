@@ -1,6 +1,6 @@
 ---
 title: "Best Marketing Automation Software (2026): Lead Scoring, Nurture Sequences, and the Free Plan Trap"
-description: "Compare the 5 best marketing automation platforms for 2026: HubSpot, ActiveCampaign, Mailchimp, Marketo, and Pardot. Real pricing, lead scoring, and CRM integration tested."
+description: "Compare the 5 best marketing automation platforms for 2026: HubSpot, ActiveCampaign, Mailchimp, Marketo, and Pardot. Real pricing, lead scoring, and CRM"
 category: "Marketing Automation"
 pubDate: 2026-07-04
 takeaways:
