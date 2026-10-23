@@ -64,7 +64,7 @@ We ran a real business's books through both platforms for a month: invoicing, ba
 
 ### Xero Pricing (per month)
 
-*List prices in USD, monthly billing, per Xero US pricing page (xero.com/us/pricing-plans/), verified 2026-10-23.*
+*List prices in USD, monthly billing, per Xero US pricing page (xero.com/us/pricing-plans/), verified 2026-10-23. Xero frequently runs introductory discounts; the prices above are regular rates.*
 
 | Plan | Regular Price | Users Included | Key Features |
 |------|-------------|----------------|--------------|
