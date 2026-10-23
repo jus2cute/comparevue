@@ -52,7 +52,7 @@ We set up real ticket workflows in both platforms, routed live customer inquirie
 
 | Plan | Price | What You Get |
 |------|-------|--------------|
-| Suite Team | $69 | Ticketing, email/social/voice, Help Center, AI agents (basic), analytics |
+| Suite Team | $55 | Ticketing, email/social/voice, Help Center, AI agents (basic), analytics |
 | Suite Growth | $115 | All Team + SLA management, multilingual content, self-service customer portal, AI agents (advanced bots) |
 | Suite Professional | $149 | All Growth + custom analytics, side conversations, skills-based routing, integrated community forums |
 | Suite Enterprise | Custom | All Professional + sandbox, federated search, advanced AI, custom agent roles, HIPAA |
@@ -69,9 +69,9 @@ We set up real ticket workflows in both platforms, routed live customer inquirie
 ### Real-World Cost Comparison
 
 **At 10 agents:**
-- Zendesk Suite Team: **$690/month** — solid ticketing, basic AI, analytics
+- Zendesk Suite Team: **$550/month** — solid ticketing, basic AI, analytics
 - Freshdesk Pro: **$590/month** — full automation suite, multilingual, CSAT surveys
-- *Zendesk is $100/month more while delivering fewer features at this tier.*
+- *Zendesk is $40/month less while delivering fewer features at this tier.*
 
 **At 25 agents:**
 - Zendesk Suite Growth: **$2,875/month** — SLAs, multilingual, customer portal
@@ -177,7 +177,7 @@ We set up real ticket workflows in both platforms, routed live customer inquirie
 - **Teams of 5-50 agents** who want professional help desk features without enterprise pricing
 - **Startups and SMBs** who need a free tier to start and affordable scaling
 - **Teams that want AI features included** — Freddy's article suggestion and ticket field suggester are genuinely useful at no extra cost
-- **Price-sensitive teams** who can't justify $69/agent/month when $18-59/agent/month covers their needs
+- **Price-sensitive teams** who can't justify $55/agent/month when $18-59/agent/month covers their needs
 
 **Bottom line:** If budget isn't a concern and you value maximum configurability and integrations, buy Zendesk. If you're looking for the best value in help desk software right now, Freshdesk is the pick — and it's not particularly close.
 

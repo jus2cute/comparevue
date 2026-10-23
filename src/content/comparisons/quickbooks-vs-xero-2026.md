@@ -64,11 +64,13 @@ We ran a real business's books through both platforms for a month: invoicing, ba
 
 ### Xero Pricing (per month)
 
+*List prices in USD, monthly billing, per Xero US pricing page (xero.com/us/pricing-plans/), verified 2026-10-23.*
+
 | Plan | Regular Price | Users Included | Key Features |
 |------|-------------|----------------|--------------|
-| Early | $15 | Unlimited | 20 invoices, 5 bills, bank reconciliation, Hubdoc (5 docs/month), basic reports |
-| Growing | $42 | Unlimited | Unlimited invoices and bills, bulk reconciliation, multi-currency |
-| Established | $78 | Unlimited | All Growing + project tracking, advanced analytics, expense claims, Hubdoc (unlimited) |
+| Early | $27 | Unlimited | 20 invoices, 5 bills, bank reconciliation, Hubdoc (5 docs/month), basic reports |
+| Growing | $59 | Unlimited | Unlimited invoices and bills, bulk reconciliation, multi-currency |
+| Established | $97 | Unlimited | All Growing + project tracking, advanced analytics, expense claims, Hubdoc (unlimited) |
 
 **Payroll (Gusto integration recommended):**
 - Xero doesn't have native US payroll. For US businesses, Xero partners with Gusto: Gusto Simple starts at $40/month + $6/person/month. Gusto Plus at $80/month + $12/person/month.
@@ -76,22 +78,22 @@ We ran a real business's books through both platforms for a month: invoicing, ba
 ### Real-World Cost Comparison
 
 **At 1 user (sole proprietor):**
-- QuickBooks Simple Start: **$35/month** | Xero Early: **$15/month**
+- QuickBooks Simple Start: **$35/month** | Xero Early: **$27/month**
 - *Xero is $240/year cheaper for solo businesses.*
 
 **At 5 users (small team):**
-- QuickBooks Plus: **$99/month** | Xero Growing: **$42/month**
+- QuickBooks Plus: **$99/month** | Xero Growing: **$59/month**
 - Payroll (5 employees, basic): QuickBooks Core **$80/month** | Gusto Simple (Xero partner) **$70/month**
 - Total: QuickBooks **$179/month** | Xero + Gusto **$112/month**
 - *Xero saves ~$800/year at this tier.*
 
 **At 25 users (growing business):**
-- QuickBooks Advanced: **$235/month** | Xero Established: **$78/month**
+- QuickBooks Advanced: **$235/month** | Xero Established: **$97/month**
 - Payroll (25 employees, basic): QuickBooks Core **$200/month** | Gusto Plus **$380/month**
 - Total: QuickBooks **$435/month** | Xero + Gusto **$458/month**
 - *QuickBooks edges ahead at 25+ employees when payroll is factored in, mostly because QuickBooks payroll scales better at volume.*
 
-**Surprising finding #2:** Xero's "unlimited users" policy is a game-changer at mid-market. QuickBooks charges per-user or caps users per plan. For a 15-person team where 8 people need access, QuickBooks Advanced ($235) is the only option — Xero Established ($78) handles it easily. QuickBooks can be nearly 3x the price for access parity.
+**Surprising finding #2:** Xero's "unlimited users" policy is a game-changer at mid-market. QuickBooks charges per-user or caps users per plan. For a 15-person team where 8 people need access, QuickBooks Advanced ($235) is the only option — Xero Established ($97) handles it easily. QuickBooks can be nearly 3x the price for access parity.
 
 ---
 
@@ -117,7 +119,7 @@ We ran a real business's books through both platforms for a month: invoicing, ba
 
 **QuickBooks Plus ($99/month)** includes inventory tracking: cost of goods sold, quantity tracking, low-stock alerts, purchase orders, and FIFO costing. It's solid for businesses with moderate inventory needs (think: boutique retail, light manufacturing).
 
-**Xero** handles tracked inventory items (FIFO), assemblies/bundles (bill of materials), and multi-currency purchase orders — all on Xero Established ($78/month). For inventory-heavy businesses, Xero's subtler inventory features (like the ability to track inventory across multiple warehouses with third-party apps) edge ahead.
+**Xero** handles tracked inventory items (FIFO), assemblies/bundles (bill of materials), and multi-currency purchase orders — all on Xero Established ($97/month). For inventory-heavy businesses, Xero's subtler inventory features (like the ability to track inventory across multiple warehouses with third-party apps) edge ahead.
 
 **Edge: Xero**, especially for businesses that buy and sell across borders.
 

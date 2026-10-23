@@ -26,7 +26,7 @@ We've tested over 40 tools hands-on across CompareVue. Here's the stack we'd pic
 | **CRM** | HubSpot | Unlimited users | $15/user/mo | Best free CRM, grows with you |
 | **Budget CRM** | Zoho CRM | 3 users | $14/user/mo | Enterprise features, SMB pricing |
 | **Project Management** | ClickUp | Unlimited users | $7/user/mo | All-in-one: tasks, docs, goals, chat |
-| **Team Communication** | Slack | Unlimited users, 90-day history | $7.25/user/mo | Standard for a reason — integrations |
+| **Team Communication** | Slack | Unlimited users, 90-day history | $8.75/user/mo | Standard for a reason — integrations |
 | **Email Marketing** | Mailchimp | 500 contacts | $13/mo | Easiest to start, best deliverability |
 | **Docs & Wiki** | Notion | Unlimited pages | $10/user/mo | Best-in-class document editor |
 | **Accounting** | Xero | 30-day trial | $15/mo | Clean UI, great for non-accountants |
@@ -78,7 +78,7 @@ The downside: ClickUp's feature overload can overwhelm new users. The interface 
 
 Slack is the default for a reason. The free tier (unlimited users, 90-day message history, 10 integrations) is enough for most small teams to start. The integrations — Google Drive, Zoom, Asana, GitHub, and thousands more — make Slack the hub that connects your entire tool stack.
 
-At $7.25/user/mo (Pro), you get unlimited message history, huddles, and unlimited integrations. For a 10-person team, that's $72.50/month — reasonable for a tool your team uses all day.
+At $8.75/user/mo (Pro, annual billing; $10 monthly), you get unlimited message history, huddles, and unlimited integrations. For a 10-person team, that's $87.50/month on annual billing — reasonable for a tool your team uses all day.
 
 **Read our full comparison:** [Slack vs Microsoft Teams →](/comparisons/slack-vs-microsoft-teams-2026)
 
@@ -141,7 +141,7 @@ Free tiers eventually hit limits. Here's when to pay:
 
 1. **HubSpot CRM → Pay when you need marketing automation or sequences.** The free CRM itself never expires.
 2. **ClickUp → Pay at $7/user/mo when you need Gantt charts and unlimited storage.** The free plan handles basic PM indefinitely.
-3. **Slack → Pay at $7.25/user/mo when 90-day message history isn't enough.** Or never, if you treat Slack as ephemeral.
+3. **Slack → Pay at $8.75/user/mo (annual) when 90-day message history isn't enough.** Or never, if you treat Slack as ephemeral.
 4. **Mailchimp → Pay when you exceed 500 contacts.** The pricing ramps gradually.
 5. **Notion → Pay at $10/user/mo when you need unlimited file uploads and 30-day history.**
 

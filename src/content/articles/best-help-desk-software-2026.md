@@ -27,7 +27,7 @@ We opened real accounts on all five platforms, filed test tickets, and ran suppo
 |------|-----------|---------|----------|----------|------------|---------------|
 | **Help Scout** | No | $25/user/mo (Standard) | $50/user/mo (Plus) | $75/user/mo (Pro) | Custom | No per-ticket fees; straightforward per-agent pricing |
 | **Freshdesk** | Yes (10 agents) | $15/user/mo (Growth) | $49/user/mo (Pro) | $79/user/mo (Enterprise) | Custom | Free tier is surprisingly capable; Pro unlocks most automation |
-| **Zendesk** | No | $25/user/mo (Support Team) | $69/user/mo (Suite Growth) | $115/user/mo (Suite Pro) | Custom | Suite plans bundle help center, AI, and analytics; Team plan is bare bones |
+| **Zendesk** | No | $19/user/mo (Support Team, annual) | $55/user/mo (Suite Team, annual) | $115/user/mo (Suite Professional, annual) | Custom | Suite plans bundle help center, AI, and analytics; Support Team plan is bare bones |
 | **Intercom** | No | $29/user/mo (Essential) | $85/user/mo (Advanced) | $132/user/mo (Expert) | Custom | Per-seat pricing hides resolution-based charges on some plans; ask before buying |
 | **Zoho Desk** | Yes (3 agents) | $14/user/mo (Standard) | $23/user/mo (Professional) | $40/user/mo (Enterprise) | Custom | Cheapest full-featured option; annual billing required for listed rates |
 
